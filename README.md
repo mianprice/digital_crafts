@@ -1,1 +1,2 @@
-# python_exercises\nDigital Crafts Python Exercises
+# python_exercises
+Digital Crafts Python Exercises
