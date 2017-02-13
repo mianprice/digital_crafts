@@ -10,3 +10,5 @@ del phonebook_dict['Alice']
 phonebook_dict['Bob'] = '968-345-2345'
 for key, value in phonebook_dict.items():
     print "%s's phone number is %s"%(key,value)
+
+# Using fixed keys    
