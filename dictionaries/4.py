@@ -8,21 +8,28 @@ def isLetter(i):
 def word_histogram(p):
     h = {}
     n = ""
-    for char in p:
-        if isLetter(char):
-            n += char.lower()
-        else:
-            if len(n) > 0:
-                h[n] = h.get(n,0) + 1
-                n = ""
-    h[n] = h.get(n,0) + 1
+    if type(p) == str:
+        for char in p:
+            if isLetter(char):
+                n += char.lower()
+            else:
+                if len(n) > 0:
+                    h[n] = h.get(n,0) + 1
+                    n = ""
+        h[n] = h.get(n,0) + 1
+    elif type(p) == list:
+        for w in p:
+            n = w
+            h[n] = h.get(n,0) + 1
     return h
 
 def printHistogram(i):
     for key,value in i.items():
         print "%s :: %d"%(key,value)
 
-x = word_histogram('To be or not to be')
-printHistogram(x)
+if __name__ == '__main__':
 
-# Using dynamic keys
+    x = word_histogram('To be or not to be')
+    printHistogram(x)
+
+    # Using dynamic keys

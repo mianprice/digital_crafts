@@ -1,12 +1,13 @@
-h = {}
+functions = __import__('4')
 
 def letter_histogram(w):
+    h = {}
     for c in w:
         h[c] = h.get(c,0) + 1
+    return h
 
-letter_histogram('banana')
+if __name__ == '__main__':
 
-for key,value in h.items():
-    print "%s :: %d"%(key,value)
+    functions.printHistogram(letter_histogram('banana'))
 
-# Dynamic keys
+    # Dynamic keys
