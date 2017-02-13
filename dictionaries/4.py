@@ -14,9 +14,8 @@ def word_histogram(p):
         else:
             if len(n) > 0:
                 h[n] = h.get(n,0) + 1
-                print n
-                print h[n]
                 n = ""
+    h[n] = h.get(n,0) + 1
     return h
 
 def printHistogram(i):
@@ -25,3 +24,5 @@ def printHistogram(i):
 
 x = word_histogram('To be or not to be')
 printHistogram(x)
+
+# Using dynamic keys
