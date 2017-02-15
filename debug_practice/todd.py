@@ -12,7 +12,7 @@ class Character(object):
         print "The %s has %d health and %d power." % (self.name,self.health, self.power)
 
     def attack(self,foe):
-        self.health -= self.power
+        foe.health -= self.power
         print "The %s does %d damage to you." % (self.name, self.power)
         if not foe.alive():
             print "You are dead."

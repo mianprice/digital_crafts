@@ -64,7 +64,7 @@ class Character(object):
         if self.armor > points:
             return 0
         else:
-            return points - armor
+            return points - self.armor
 
 
 '''
@@ -210,7 +210,7 @@ class Wizard(Enemy):
         if not self.isAlive():
             return
         swap_power = random.random() > 0.5
-        if not swap_power:
+        if swap_power:
             print "%s swaps power with %s during attack" % (self.name, enemy.name)
             self.power, enemy.power = enemy.power, self.power
         super(Wizard, self).attack(enemy)
@@ -227,7 +227,7 @@ class Shadow(Enemy):
 
     def receive_damage(self, points, enemy):
         self.lastAttack = enemy
-        doubleCheck = random.random() == 0.1
+        doubleCheck = random.random() < 0.1
         if doubleCheck:
             self.health -= points
         else:
