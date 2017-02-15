@@ -210,7 +210,7 @@ class Wizard(Enemy):
         if not self.isAlive():
             return
         swap_power = random.random() > 0.5
-        if swap_power:
+        if not swap_power:
             print "%s swaps power with %s during attack" % (self.name, enemy.name)
             self.power, enemy.power = enemy.power, self.power
         super(Wizard, self).attack(enemy)
@@ -227,7 +227,7 @@ class Shadow(Enemy):
 
     def receive_damage(self, points, enemy):
         self.lastAttack = enemy
-        doubleCheck = random.random() < 0.1
+        doubleCheck = random.random() == 0.1
         if doubleCheck:
             self.health -= points
         else:
@@ -351,7 +351,7 @@ elif heroType == "Achilles":
     hero = Achilles()
 else:
     hero = Hero(heroType)
-enemies = [Zombie(), Wizard()]
+enemies = [Shadow(), Wizard(), Goblin(), Medic()]
 battle_engine = Battle()
 shopping_engine = Store()
 
