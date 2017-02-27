@@ -1,5 +1,0 @@
-Q: Why doesn't your health go down when an enemy attacks?
-H: Your health doesn't change when attacked
-P: The zombie attack function does not correctly change values
-E: line 15: self.health -= self.power => foe.health -= self.power
-A: Correct, the Character attack function was incorrect.  It worked for the hero because the Character attack() was overridden by the Hero attack() 

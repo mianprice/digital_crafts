@@ -1,2 +1,2 @@
-# python_exercises
-Digital Crafts Python Exercises
+# Digital Crafts Intro Exercises and Assignments
+
