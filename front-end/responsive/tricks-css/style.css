@@ -1,0 +1,145 @@
+* {
+  margin:0;
+  box-sizing: border-box;
+  font-family: 'Roboto',sans-serif;
+}
+h1 {
+  font-family: impact,sans-serif;
+}
+span {
+  padding-left: 1em;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: content-box;
+}
+/* CLEARFIX */
+.c1::before, .container::after {
+    content:"";
+    display:table;
+}
+.c1::after {
+    clear:both;
+}
+.c1 {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+/* END CLEARFIX */
+.content {
+  float:left;
+  background-color: darkgrey;
+  box-sizing: content-box;
+  width:70vw;
+}
+.icon,.logo {
+  height: 100%;
+  padding:1.5vh;
+}
+.sidebar {
+  float:right;
+  width: 30%;
+}
+.header {
+  text-align: left;
+  width: 100%;
+  height: 10vh;
+  border-bottom: solid orange 5px;
+}
+.inputarea {
+  width:22.5%;
+}
+input {
+  border: solid darkgrey 1px;
+  height:100%;
+  width:100%;
+}
+.side_item {
+  float: left;
+  width:100%;
+  padding: 5%;
+}
+.stock > img {
+  width:100%;
+}
+.item {
+  background-color: white;
+  width:90%;
+  margin:5%;
+}
+.item > .header {
+  height:20%;
+  width:100%;
+  padding-top:5%;
+  padding-left:5%;
+  padding-right:5%;
+  padding-bottom:1%;
+  border: none;
+}
+.bodycontent {
+  width:100%;
+  padding-top:1%;
+  padding-bottom:5%;
+  padding-left:5%;
+  padding-right:5%;
+}
+.divider {
+  width: 100%;
+  background-color: rgb(238,238,238);
+  padding: 1% 5%;
+}
+.header > h1 {
+  height:50px;
+  width:100%;
+  float:left;
+}
+.itemicon {
+  height: 100%;
+  padding: 1%;
+}
+.contentwrapper {
+  background-color: rgb(238,238,238);
+}
+a {
+  text-decoration: none;
+}
+@media (max-width: 425px) {
+  .sidebar {
+    width:100vw;
+    padding: 5vw 0vw;
+  }
+  .contentwrapper {
+    width: 100vw;
+    float: left;
+    background-color: rgb(238,238,238);
+  }
+  .content {
+    width: 100vw;
+    float: left;
+    background-color: darkgrey;
+  }
+  input {
+    display: none;
+  }
+  .icon {
+    max-width: 20vw;
+    height: 100%;
+    padding:1.5vh;
+  }
+  .logo {
+    max-width: 60vw;
+    padding:2vh;
+  }
+  .divider > strong {
+    width: 100%;
+  }
+  strong > span {
+    display:block;
+  }
+}

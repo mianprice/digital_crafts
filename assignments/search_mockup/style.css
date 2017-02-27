@@ -1,0 +1,44 @@
+body {
+  text-align: center;
+}
+img {
+  margin:auto;
+  padding-left: -10px
+}
+div.row {
+  display:inline-block;
+  width:100%;
+  padding:10px;
+  margin:auto;
+}
+div.inputarea {
+  width: 500px;
+  height: 40px;
+  margin:auto;
+  box-shadow: 5px 10px 8px #E2E2E2;
+}
+div.inputarea > input {
+  width: 500px;
+  height: 40px;
+  margin:auto;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+}
+div.buttonrow {
+  display:table;
+  width:50%;
+  margin:auto;
+  line-height: 40px;
+  margin-top: 10px;
+}
+div.buttonrow > .button {
+  display: table-cell;
+  width: 150px;
+  color: grey;
+  background-color: lightgrey;
+  text-align: center;
+  border: hidden black 1px;
+  border-radius: 2px;
+  font-family: arial, sans-serif;
+  font-weight: bold;
+}

@@ -1,0 +1,106 @@
+* {
+  margin:0;
+  box-sizing: border-box;
+  font-family: 'Roboto',sans-serif;
+}
+h1 {
+  font-family: impact,sans-serif;
+}
+span {
+  padding-left: 1em;
+}
+/* CLEARFIX */
+.c1::before, .container::after {
+    content:"";
+    display:table;
+}
+.c1::after {
+    clear:both;
+}
+.c1 {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+/* END CLEARFIX */
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+.content {
+  float:left;
+  background-color: darkgrey;
+  width:70%;
+}
+.sidebar {
+  float:right;
+  width: 30%;
+}
+.header {
+  text-align: left;
+  width: 100%;
+  height: 10%;
+  border-bottom: solid orange 5px;
+}
+.icon {
+  height: 100%;
+  padding:1.5%;
+}
+.inputarea {
+  width:22.5%;
+}
+input {
+  border: solid darkgrey 1px;
+  height:100%;
+  width:100%;
+}
+.side_item {
+  float: left;
+  width:100%;
+  padding: 5%;
+}
+.stock > img {
+  width:100%;
+}
+.item {
+  background-color: white;
+  width:90%;
+  margin:5%;
+}
+.item > .header {
+  height:20%;
+  width:100%;
+  padding-top:5%;
+  padding-left:5%;
+  padding-right:5%;
+  padding-bottom:1%;
+  border: none;
+}
+.bodycontent {
+  width:100%;
+  padding-top:1%;
+  padding-bottom:5%;
+  padding-left:5%;
+  padding-right:5%;
+}
+.divider {
+  width: 100%;
+  background-color: rgb(238,238,238);
+  padding: 1% 5%;
+}
+.header > h1 {
+  height:50px;
+  width:100%;
+  float:left;
+}
+.itemicon {
+  height: 100%;
+  padding: auto;
+}
+.contentwrapper {
+  background-color: rgb(238,238,238);
+}
