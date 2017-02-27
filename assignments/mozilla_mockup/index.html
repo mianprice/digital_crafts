@@ -18,7 +18,7 @@
       padding: 0px;
     }
     .jumbotron{
-      margin-bottom: 0px
+      margin-bottom: 0px;
     }
     .navbar {
       background-color: red;
@@ -34,6 +34,12 @@
       background-image: url("assets/background1.png");
       background-repeat: no-repeat;
       background-size: 100%;
+      background-position: center;
+      text-align: center;
+    }
+    .headertext {
+      padding-top: 15%;
+      padding-bottom: 15%;
     }
     #m {
       width: 100%;
@@ -58,7 +64,93 @@
       padding: 1vw;
     }
     #innovations {
-      background-color: rgb(59,137,137)
+      background-color: rgb(0,130,130);
+      color: white;
+    }
+    .firstrow>ul {
+      padding-left:30%;
+    }
+    #innovations>ul>li>.midlink>a {
+      color: white;
+    }
+    #b2 {
+      background-image: url("assets/background2.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-color: rgb(40,33,51);
+    }
+    #img1 {
+      width:100%;
+      padding:2% 45%;
+    }
+    .r2text {
+      color:white;
+      text-align:center;
+    }
+    #r3 {
+      background-color: rgb(40,33,51);
+    }
+    .r3text {
+      padding-top:30%;
+    }
+    .i2{
+      width: 100%;
+      padding: 30%;
+      padding-bottom: 0%;
+    }
+    #r4 {
+      padding: 20px;
+      background-color:rgb(245,245,245);
+    }
+    #r4>div {
+      text-align:center;
+    }
+    #r5 {
+      background-color:rgb(215,47,38);
+      padding-top: 5%;
+      padding-bottom: 5%;
+      color: white;
+    }
+    #news {
+      width: 100%;
+      padding: 5%;
+    }
+    .f {
+      width: 100%;
+      padding: 5%;
+    }
+    #r6{
+      background-color: rgb(91,91,91);
+      color: white;
+      padding: 5%;
+    }
+    #flogo {
+      width: 100%;
+      margin-left: -1%;
+      padding-right: 50%;
+    }
+    /*@media (min-width: 321px) {
+      #banner::after {
+        padding-top: 45%;
+      }
+    }*/
+    @media (max-width: 700px) {
+      .headertext {
+        padding-top:10%;
+        padding-bottom: 10%;
+      }
+      .i {
+        display: none;
+      }
+    }
+    @media (max-width: 395px) {
+      .headertext {
+        padding-top:3%;
+        padding-bottom: 3%;
+      }
+      .i {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -87,34 +179,93 @@
             </div>
         </div>
     </nav>
-    <div class="jumbotron" id="banner">
-      <h1>INTERNET FOR PEOPLE NOT PROFIT</h1>
-      <p>Hi, We'e Moozilla the proudly non-profit champoions of the interente help to keep it healthy, open and accesible to all</p>
 
-    </div>
     <div class="container">
+      <div class="row" id="banner">
+        <div class="headertext">
+          <h4>INTERNET FOR PEOPLE, NOT PROFIT.</h4>
+          <span>Hi. We’re Mozilla, the proudly non-profit champions of the Internet, helping to keep it healthy, open and accessible to all.</span>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-sm-6 col-xs-12 firstrow">
           <img id="m" src="assets/m-logo.png" alt="">
           <h4 class="text">Our Impact</h4>
           <p class="text">Working at the grassroots and policy levels, we teach web literacy, provide tools and advocate on behalf of every individual who values an internet built on fairness, inclusion and respect.</p>
           <ul class="linklist">
-            <li><img class="i" src="assets/encryption.png" alt=""></li>
-            <li><img class="i" src="assets/teach_the_web.png" alt=""></li>
-            <li><img class="i" src="assets/toolkit.png" alt=""></li>
+            <li><img class="i" src="assets/encryption.png" alt=""><span class="midlink"><a href="#">Stand Up For Encryption</a></span></li>
+            <li><img class="i" src="assets/teach_the_web.png" alt=""><span class="midlink"><a href="#">Teach The Web</a></span></li>
+            <li><img class="i" src="assets/toolkit.png" alt=""><span class="midlink"><a href="#">Try the Lean Data Toolkit</a></span></li>
           </ul>
         </div>
-        <div class="col-md-6 col-xs-12" id="innovations">
+        <div class="col-sm-6 col-xs-12 firstrow" id="innovations">
           <img id="m2" src="assets/vr-high-res.png" alt="">
           <h4 class="text">Our Innovations</h4>
           <p class="text">Using the web as the platform, we build open, innovative technologies that allow developers to work free of closed, corporate ecosystems and create faster, safer web experiences for us all.</p>
           <ul class="linklist">
-            <li><img class="i" src="assets/gaming.png" alt=""></li>
-            <li><img class="i" src="assets/vr.png" alt=""></li>
-            <li><img class="i" src="assets/servo.png" alt=""></li>
-            <li><img class="i" src="assets/rust.png" alt=""></li>
+            <li><img class="i" src="assets/gaming.png" alt=""><span class="midlink"><a href="#">Gaming on the Web</a></span></li>
+            <li><img class="i" src="assets/vr.png" alt=""><span class="midlink"><a href="#">Virtual Reality Platform</a></span></li>
+            <li><img class="i" src="assets/servo.png" alt=""><span class="midlink"><a href="#">Servo</a></span></li>
+            <li><img class="i" src="assets/rust.png" alt=""><span class="midlink"><a href="#">Rust</a></span></li>
           </ul>
         </div>
+      </div>
+      <div class="row" id="b2">
+        <img id="img1" src="assets/firefox-logo-high-res.png" alt="">
+        <h2 class="r2text">Browse freely.</h2>
+        <h4 class="r2text r3text">Discover unlimited potential, endless possibility and a wide open Web.</h4>
+        <br>
+        <h4 class="r2text"><a href="#">Get Firefox today</a></h4>
+      </div>
+      <div id="r4" class="row">
+        <div class="col-sm-4">
+          <img class="i2" src="assets/add-ons.png" alt="">
+          <h4>Add ons</h4>
+          <span>Compare prices, check the weather, listen to music, send a tweet and more right from Firefox.</span>
+        </div>
+        <div class="col-sm-4">
+          <img class="i2" src="assets/careers.png" alt="">
+          <h4>Careers</h4>
+          <span>Learn about the benefits of working at Mozilla and view open positions around the world.</span>
+        </div>
+        <div class="col-sm-4">
+          <img class="i2" src="assets/help.png" alt="">
+          <h4>Get Help</h4>
+          <span>Get answers to your questions about Firefox and all Mozilla products from our support team.</span>
+        </div>
+      </div>
+      <div class="row" id="r5">
+        <div class="col-sm-2 col-sm-offset-2">
+          <img id="news" src="assets/newsletter.png" alt="">
+        </div>
+        <div class="col-sm-3">
+          <h3>Love the Web?</h3>
+          <span>Get the Mozilla newsletter and help us keep it open and free.</span>
+        </div>
+        <div class="col-sm-3">
+          <input class="f" type="text" placeholder="YOUR EMAIL HERE">
+          <button class="btn btn-danger f" type="submit" name="button">Sign Up Now</button>
+          <span>We will only send you Mozilla-related information</span>
+        </div>
+      </div>
+      <div class="row" id="r6">
+        <div class="col-sm-4">
+          <img id="flogo" src="assets/mozilla-logo-footer.png" alt="">
+          <p>Portions of this content are ©1998–2016 by individual mozilla.org contributors. Content available under a <a href="#">Creative Commons license</a></p>
+        </div>
+        <div class="col-sm-4">
+          <p><a href="#">Contact Us</a> &middot; <a href="#">Donate</a><br><a href="#">Contribute to this site</a></p>
+          <p><a href="#">Privacy</a> &middot; <a href="#">Cookies</a> &middot; <a href="#">Legal</a><br><a href="#">Report Trademark Abuse</a></p>
+        </div>
+        <div class="col-sm-4">
+          <span>Mozilla: <a href="#">Twitter</a> &middot; <a href="#">Facebook</a></span>
+          <br>
+          <span>Firefox: <a href="#">Twitter</a> &middot; <a href="#">Facebook</a></span>
+          <br>
+          <br>
+          <span>Page Language: English</span>
+        </div>
+
       </div>
     </div>
 </body>
