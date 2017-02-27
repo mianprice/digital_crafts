@@ -8,14 +8,57 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+    .container{
+      width: 100%;
+    }
+    .row {
+      padding: 0px;
+    }
+    .jumbotron{
+      margin-bottom: 0px
+    }
     .navbar {
       background-color: red;
+      margin-bottom: 0px;
     }
     .download {
       background-color:green;
     }
     .d {
       color:white;
+    }
+    #banner {
+      background-image: url("assets/background1.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    #m {
+      width: 100%;
+      padding-left: 30%;
+      padding-right: 30%;
+    }
+    #m2 {
+      width: 100%;
+      padding-left: 30%;
+      padding-right: 30%;
+      border-radius: 50%;
+    }
+    .text {
+      text-align: center;
+    }
+    .linklist {
+      list-style: none;
+    }
+    .i {
+      max-width: 5vw;
+      max-height: 5vw;
+      padding: 1vw;
+    }
+    #innovations {
+      background-color: rgb(59,137,137)
     }
   </style>
 </head>
@@ -44,5 +87,35 @@
             </div>
         </div>
     </nav>
+    <div class="jumbotron" id="banner">
+      <h1>INTERNET FOR PEOPLE NOT PROFIT</h1>
+      <p>Hi, We'e Moozilla the proudly non-profit champoions of the interente help to keep it healthy, open and accesible to all</p>
+
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <img id="m" src="assets/m-logo.png" alt="">
+          <h4 class="text">Our Impact</h4>
+          <p class="text">Working at the grassroots and policy levels, we teach web literacy, provide tools and advocate on behalf of every individual who values an internet built on fairness, inclusion and respect.</p>
+          <ul class="linklist">
+            <li><img class="i" src="assets/encryption.png" alt=""></li>
+            <li><img class="i" src="assets/teach_the_web.png" alt=""></li>
+            <li><img class="i" src="assets/toolkit.png" alt=""></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-xs-12" id="innovations">
+          <img id="m2" src="assets/vr-high-res.png" alt="">
+          <h4 class="text">Our Innovations</h4>
+          <p class="text">Using the web as the platform, we build open, innovative technologies that allow developers to work free of closed, corporate ecosystems and create faster, safer web experiences for us all.</p>
+          <ul class="linklist">
+            <li><img class="i" src="assets/gaming.png" alt=""></li>
+            <li><img class="i" src="assets/vr.png" alt=""></li>
+            <li><img class="i" src="assets/servo.png" alt=""></li>
+            <li><img class="i" src="assets/rust.png" alt=""></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
