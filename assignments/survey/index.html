@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey</title>
+    <style media="screen">
+      label {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 30%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="submit.php" method="post">
+      <label>Enter your name: <br><input type="text" name="name"></label>
+      <label>Enter your password: <br><input type="password" name="password"></label>
+      <label>Choose your gender:</label>
+      <label><input type="radio" name="gender" value="male"> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <label>Check all the foods below that you like:</label>
+      <label><input type="checkbox" name="taco"> Tacos</label>
+      <label><input type="checkbox" name="fried_rice"> Fried Rice</label>
+      <label><input type="checkbox" name="catfish"> Catfish</label>
+      <label><input type="checkbox" name="sandwiches"> Sandwiches</label>
+      <label><input type="checkbox" name="burgers"> Burgers</label>
+      <label><input type="checkbox" name="fries"> Fries</label>
+      <label>Select your operating system: <select name="os">
+        <option value="windows">Windows</option>
+        <option value="osx">OS X</option>
+        <option value="linux">Linux</option>
+        <option value="plan9">Plan 9</option>
+        <option value="other">Other</option>
+      </select></label>
+      <label>Do you have any questions?</label>
+      <label><input type="textarea" name="questions"></label>
+      <label><input type="submit" name="action" value="Submit"></label>
+    </form>
+  </body>
+</html>

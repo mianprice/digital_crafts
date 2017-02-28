@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="col-xs-6 col-xs-offset-3">
+      <form action="submit.php" method="post">
+        <div class="form-group col-xs-12">
+          <label>Enter your name:</label>
+          <input class="form-control" type="text" name="name" placeholder="Name">
+        </div>
+        <div class="form-group col-xs-12">
+          <label>Enter your password:</label>
+          <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group col-xs-12">
+          <label>Gender:</label>
+          <br>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="gender" value="male">
+              Male
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label>
+              <input type="radio" name="gender" value="female">
+              Female
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-xs-12">
+          <label>Check all the foods you like:</label>
+          <br>
+          <div class="checkbox col-xs-6 col-xs-offset-1">
+            <label>
+              <input type="checkbox" name="tacos">
+              Tacos
+            </label>
+          </div>
+          <div class="checkbox col-xs-6 col-xs-offset-1">
+            <label>
+              <input type="checkbox" name="fried_rice">
+              Fried Rice
+            </label>
+          </div>
+          <div class="checkbox col-xs-6 col-xs-offset-1">
+            <label>
+              <input type="checkbox" name="catfish">
+              Catfish
+            </label>
+          </div>
+          <div class="checkbox col-xs-6 col-xs-offset-1">
+            <label>
+              <input type="checkbox" name="sandwiches">
+              Sandwiches
+            </label>
+          </div>
+          <div class="checkbox col-xs-6 col-xs-offset-1">
+            <label>
+              <input type="checkbox" name="burgers">
+              Burgers
+            </label>
+          </div>
+          <div class="checkbox col-xs-6 col-xs-offset-1">
+            <label>
+              <input type="checkbox" name="fries">
+              Fries
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-xs-12">
+          <label>Choose your operating system:</label>
+          <select class="form-control" name="os" placeholder="Choose your OS">
+            <option value="windows">Windows</option>
+            <option value="osx">OS X</option>
+            <option value="linux">Linux</option>
+            <option value="plan9">Plan 9</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group col-xs-12">
+          <label>Do you have any questions?</label>
+          <textarea class="form-control" name="questions" rows="3"></textarea>
+        </div>
+        <div class="form-group col-xs-12">
+          <button type="submit" name="submit" class="btn btn-success form-control">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
