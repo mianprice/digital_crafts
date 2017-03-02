@@ -22,7 +22,6 @@ function winSets(grid) {
       sets[j + grid.length] += grid[j][i];
     }
   }
-  console.log(sets);
   return sets;
 }
 
