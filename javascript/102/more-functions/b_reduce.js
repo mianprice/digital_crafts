@@ -2,7 +2,7 @@ function reduce(arr,combine,initialValue) {
   if (arr.length === 0) {
     return initialValue;
   }
-  var n = combine(arr.pop(0),initialValue);
+  var n = combine(arr.shift(),initialValue);
   return reduce(arr,combine,n);
 }
 
