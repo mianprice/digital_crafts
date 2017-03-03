@@ -13,31 +13,44 @@
 //   return result;
 // }
 
-function cipher(text,offset) {
-  var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
-  var result = '';
-  var arr = text.split('');
-  var new_arr = arr.map(function(c) {
-    return alphabet[(alphabet.indexOf(c) + offset) % 26];
+function str_join(arr,sep) {
+  var count = arr.length;
+  arr = arr.map(function(item) {
+    if (arr.length !== count) {
+      item = sep + item;
+    } else {
+      count --;
+    }
+    return item;
   });
-  result = new_arr.join('');
-  return result;
+  return arr.reduce(function(a,b) {
+    return a + b;
+  },"");
 }
 
-function decipher(text,offset) {
+function cipher(text,offset,de) {
+  if (!de) {
+    offset = -offset;
+  }
   var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
   var result = '';
   var arr = text.split('');
   var new_arr = arr.map(function(c) {
-    return alphabet[(alphabet.indexOf(c) - offset) >= 0 ? (alphabet.indexOf(c) - offset) : (alphabet.indexOf(c) - offset) + 26];
+    var index = (alphabet.indexOf(c) + offset);
+    if (index > 25) {
+      index = index % 26;
+    } else if (index < 0) {
+      index = index + 26;
+    }
+    return alphabet[index];
   });
-  result = new_arr.join('');
+  result = str_join(new_arr,'');
   return result;
 }
 
 // You can assume that the text is only one word, all letters are capitalized, and the offset is always 13
-var encrypted = cipher('GENIUS',13);
-var decrypted = decipher(encrypted,13);
+var encrypted = cipher('GENIUS',13,true);
+var decrypted = cipher(encrypted,13,false);
 
 console.log(encrypted);
 console.log(decrypted);
