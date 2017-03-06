@@ -12,6 +12,10 @@
     */
     $(function() {
       // Write code here
+      $("a").click(function(e) {
+        e.preventDefault();
+        $("#iframe").attr('src',this['href']);
+      });
     });
     </script>
   </head>

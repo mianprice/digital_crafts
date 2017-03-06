@@ -11,10 +11,41 @@
     0. Make it so that after entering the task description, in the text field and clicking the "Add Task" button, a new task appears inside the element with the id todo-list.
     1. the ability to remove tasks (add an x button)
     2. the ability to check off tasks - strikes them out wo removing (add a checkbox)
-    3. the ability to delete a task
-    4. the ability to edit an existing task
+    3. the ability to edit an existing task
 
     */
+    var removeButton = '<button class="remove">Delete</button>';
+    var strikeButton = '<button class="strike"><span class="done">Done</span><span style="display:none;" class="not-done">Not Done</span></button>';
+    var editButton = '<button class="edit">Edit</button>';
+    var saveButton = '<button class="save">Save</button>';
+
+    $(function() {
+      $("#todo-list li").append("<br>",strikeButton,editButton,removeButton);
+      $("#todo-list").on('click',".remove",function() {
+        $(this).closest("li").remove();
+      });
+      $("#todo-list").on('click',".strike",function() {
+        $(this).closest("li").toggleClass("st");
+        $(".done").toggle();
+        $(".not-done").toggle();
+      });
+      $("#todo-list").on('click',".edit",function() {
+        var element = $(this).closest("li");
+        var t = element.text();
+        t = t.replace("DoneNot DoneEditDelete","");
+        element.empty();
+        element.append("<input type='text' id='editable' value='" + t + "'>");
+        element.append(saveButton);
+      });
+      $("#todo-list").on('click',".save", function() {
+        var element = $(this).closest("li");
+        element.html($("#editable").val() + "<br>" + strikeButton  + editButton + removeButton);
+      });
+      $("#add-button").click(function() {
+        $("#todo-list").append("<li>" + $("#description").val() + "<br>" + strikeButton  + editButton + removeButton  + "</li>");
+        $("#description").val("");
+      });
+    });
     </script>
     <style>
     #wrapper {
@@ -24,6 +55,9 @@
 
     #description, #search, #todo-list {
       font-size: 1.5em;
+    }
+    .st {
+      text-decoration: line-through;
     }
     </style>
   </head>
