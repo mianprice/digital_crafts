@@ -1,65 +1,93 @@
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
   padding: 0;
   margin: 0;
+  background-color: lightblue;
 }
 
 .game {
   float:left;
-  width: 90vw;
-  height: 90vh;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  margin-top: 5vw;
-  margin-bottom: 5vw;
+  width: 96vw;
+  height: 96vh;
+  margin: 2vw;
   overflow: auto;
+  background-color: lightblue;
+}
+
+.header {
+  width:100%;
+  float:left;
+  background-color: lightblue;
+}
+
+.title, .status {
+  margin-top: 1vw;
+
+  background-color: white;
+  border: 2px solid black;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0px 5px;
+}
+
+.title {
+  font-size: 200%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.status {
+  font-size: 150%;
+  margin-left: 25%;
+  margin-right: 25%;
+
 }
 
 .board {
   float:left;
-  width: 42vw;
-  height: 42vw;
-  margin-left: 24vw;
-  margin-right: 24vw;
-  margin-top: 5vw;
-  margin-bottom: 1vw;
+  width: 45vw;
+  height: 45vw;
+  margin: 1vw;
+  margin-left: 13vw;
+  border: 5px solid black;
 }
 
-.row {
-  width:42vw;
-  height:14vw;
+.placeholder {
+  box-sizing: border-box;
+  float:right;
+  width: 18vw;
+  margin: 1vw;
+  margin-right: 13vw;
 }
 
 .winner {
   float: left;
+  box-sizing: border-box;
   text-align:center;
-  width: 42vw;
-  margin-left: 24vw;
-  margin-right: 24vw;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
+  width: 18vw;
   border: 3px solid black;
+  font-weight: bold;
+  font-size: 200%;
   padding-top: 5px;
-  padding-bottom:5px;
+  background-color:white;
 }
 
 .counter {
-  float: left;
+  box-sizing: border-box;
+  float: right;
   text-align: center;
-  width: 50vw;
+  width: 18vw;
   font-size: 200%;
-  margin-left: 20vw;
-  margin-right: 20vw;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
-  background-color: grey;
+  margin: 1vw;
+  margin-right: 13vw;
+  background-color: lightgrey;
   border: 5px solid black;
 }
 
 .counter table {
-  background-color: grey;
-  width: 90%;
-  margin: 5%;
+  background-color: lightgrey;
+  width: 96%;
+  margin: 2%;
 }
 
 .counter th,td {
@@ -68,30 +96,26 @@
 }
 
 .play-again {
-  width: 28vw;
-  font-size: 200%;
-  margin-left: 7vw;
-  margin-right: 7vw;
-  margin-top: 5vw;
-  margin-bottom: 5vw;
-  background-color: grey;
-  border: 5px solid black;
+  text-align: center;
+  margin: 1vw;
+  background-color: lightgrey;
+  border: 1px solid black;
 }
 
 .cell {
-  width: 14vw;
-  height: 14vw;
+  width: 15vw;
+  height: 15vw;
   text-align: center;
   font-size: 550%;
   float: left;
 }
 
 .odd {
-  background-color: grey;
+  background-color: lightgrey;
 }
 
 .even {
-  background-color: lightgrey;
+  background-color: white;
 }
 
 #one {

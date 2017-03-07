@@ -9,32 +9,29 @@
   </head>
   <body>
     <div class="game">
+      <div class="header">
+        <div class="title">Tic Tac Toe</div>
+        <div class="status">Make your move!</div>
+      </div>
       <div class="board">
-        <div class="row">
-          <div id="one" class="cell odd"></div>
-          <div id="two" class="cell even"></div>
-          <div id="three" class="cell odd"></div>
-        </div>
-        <div class="row">
-          <div id="four" class="cell even"></div>
-          <div id="five" class="cell odd"></div>
-          <div id="six" class="cell even"></div>
-        </div>
-        <div class="row">
-          <div id="seven" class="cell odd"></div>
-          <div id="eight" class="cell even"></div>
-          <div id="nine" class="cell odd"></div>
-        </div>
-        <br style="clear:both;">
+        <div id="one" class="cell odd"></div>
+        <div id="two" class="cell even"></div>
+        <div id="three" class="cell odd"></div>
+        <div id="four" class="cell even"></div>
+        <div id="five" class="cell odd"></div>
+        <div id="six" class="cell even"></div>
+        <div id="seven" class="cell odd"></div>
+        <div id="eight" class="cell even"></div>
+        <div id="nine" class="cell odd"></div>
       </div>
       <div class="counter">
         <table>
           <tr>
-            <th colspan="2"><strong>WINS</strong></th>
+            <th colspan="2">WINS</th>
           </tr>
           <tr>
-            <td>Player 1</td>
-            <td>Player 2</td>
+            <td>P1</td>
+            <td>P2</td>
           </tr>
           <tr>
             <td class="p1"></td>
@@ -42,7 +39,9 @@
           </tr>
         </table>
       </div>
-      <div class="winner"></div>
+      <div class="placeholder">
+        <div class="winner"></div>
+      </div>
       <br style="clear:both;">
     </div>
     <br style="clear:both;">
