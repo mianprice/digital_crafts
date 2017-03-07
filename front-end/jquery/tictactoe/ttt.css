@@ -8,20 +8,21 @@
   float:left;
   width: 90vw;
   height: 90vh;
-  padding-left: 5vw;
-  padding-right: 5vw;
-  padding-top: 5vw;
-  padding-bottom: 5vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  overflow: auto;
 }
 
 .board {
   float:left;
   width: 42vw;
   height: 42vw;
-  padding-left: 24vw;
-  padding-right: 24vw;
-  padding-top: 5vw;
-  padding-bottom: 5vw;
+  margin-left: 24vw;
+  margin-right: 24vw;
+  margin-top: 5vw;
+  margin-bottom: 1vw;
 }
 
 .row {
@@ -29,11 +30,58 @@
   height:14vw;
 }
 
+.winner {
+  float: left;
+  text-align:center;
+  width: 42vw;
+  margin-left: 24vw;
+  margin-right: 24vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  border: 3px solid black;
+  padding-top: 5px;
+  padding-bottom:5px;
+}
+
+.counter {
+  float: left;
+  text-align: center;
+  width: 50vw;
+  font-size: 200%;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  background-color: grey;
+  border: 5px solid black;
+}
+
+.counter table {
+  background-color: grey;
+  width: 90%;
+  margin: 5%;
+}
+
+.counter th,td {
+   border: 1px solid black;
+   background-color: white;
+}
+
+.play-again {
+  width: 28vw;
+  font-size: 200%;
+  margin-left: 7vw;
+  margin-right: 7vw;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  background-color: grey;
+  border: 5px solid black;
+}
+
 .cell {
   width: 14vw;
   height: 14vw;
   text-align: center;
-  vertical-align: center;
   font-size: 550%;
   float: left;
 }
