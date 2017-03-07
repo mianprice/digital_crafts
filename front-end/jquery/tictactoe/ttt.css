@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.game {
+  float:left;
+  width: 90vw;
+  height: 90vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+.board {
+  float:left;
+  width: 42vw;
+  height: 42vw;
+  padding-left: 24vw;
+  padding-right: 24vw;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
+}
+
+.row {
+  width:42vw;
+  height:14vw;
+}
+
+.cell {
+  width: 14vw;
+  height: 14vw;
+  text-align: center;
+  vertical-align: center;
+  font-size: 550%;
+  float: left;
+}
+
+.odd {
+  background-color: grey;
+}
+
+.even {
+  background-color: lightgrey;
+}
+
+#one {
+}
+
+#two {
+}
+
+#three {
+}
+
+#four {
+}
+
+#five {
+}
+
+#six {
+}
+
+#seven {
+}
+
+#eight {
+}
+
+#nine {
+}
