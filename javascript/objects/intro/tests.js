@@ -139,52 +139,59 @@ describe('Deck', function () {
 
 });
 
-// describe('BlackjackDeck', function () {
-//
-//   it('should instantiate a BlackjackDeck with an array of Cards', function() {
-//     var deck = new Deck();
-//     expect(deck.cards.length).toEqual(52);
-//   });
-//
-//   it('should return a Card from the Deck when draw() function is used', function() {
-//     var deck = new Deck();
-//     expect(deck.draw()).toEqual(jasmine.any(Card));
-//   });
-//
-//   it('should remove a Card from Deck when draw() function is used', function() {
-//     var deck = new Deck();
-//     var card1 = deck.draw();
-//     expect(deck.cards.length).toEqual(51);
-//   });
-//
-//   it('should return a different Card from Deck when draw() function is used subsequent times', function() {
-//     var deck = new Deck();
-//     var card1 = deck.draw();
-//     var card2 = deck.draw();
-//     expect(card1).not.toEqual(card2);
-//   });
-//
-//   it('should shuffle the order of Cards in Deck when shuffle() function is called', function() {
-//     var deck = new Deck();
-//     var copy1 = JSON.parse(JSON.stringify(deck));
-//     deck.shuffle();
-//     var copy2 = JSON.parse(JSON.stringify(deck));
-//     deck.shuffle();
-//     var copy3 = JSON.parse(JSON.stringify(deck));
-//     expect(copy1).not.toEqual(copy2);
-//     expect(copy1).not.toEqual(copy3);
-//     expect(copy2).not.toEqual(copy3);
-//   });
-//
-//   it('should return the number of remaining Cards in Deck when numCardsLeft() function is called', function() {
-//     var deck = new Deck();
-//     var l1 = deck.numCardsLeft();
-//     var card1 = deck.draw();
-//     var l2 = deck.numCardsLeft();
-//     var card2 = deck.draw();
-//     var l3 = deck.numCardsLeft();
-//     expect(l1).not.toEqual(l2);
-//     expect(l2).not.toEqual(l3);
-//   });
-//
-// });
+describe('BlackjackDeck', function () {
+
+  it('should instantiate a BlackjackDeck with an array of Cards with length (52 * n) + 1', function() {
+    var n = 1;
+    var bjdeck = new BlackjackDeck(n);
+    expect(bjdeck.cards.length).toEqual((52 * n) + 1);
+    n = 3;
+    bjdeck = new BlackjackDeck(n);
+    expect(bjdeck.cards.length).toEqual((52 * n) + 1);
+    n = 6;
+    bjdeck = new BlackjackDeck(n);
+    expect(bjdeck.cards.length).toEqual((52 * n) + 1);
+  });
+
+  it('should return a Card from the BlackjackDeck when draw() function is used', function() {
+    var bjdeck = new BlackjackDeck(1);
+    expect(bjdeck.draw()).toEqual(jasmine.any(Card));
+  });
+
+  it('should remove a Card from BlackjackDeck when draw() function is used', function() {
+    var bjdeck = new BlackjackDeck(1);
+    var card1 = bjdeck.draw();
+    expect(bjdeck.cards.length).toEqual(52);
+  });
+
+  it('should return a different Card from BlackjackDeck when draw() function is used subsequent times', function() {
+    var bjdeck = new BlackjackDeck(1);
+    var card1 = bjdeck.draw();
+    var card2 = bjdeck.draw();
+    expect(card1).not.toEqual(card2);
+  });
+
+  it('should shuffle the order of Cards in BlackjackDeck when shuffle() function is called', function() {
+    var bjdeck = new BlackjackDeck(1);
+    var copy1 = JSON.parse(JSON.stringify(bjdeck));
+    bjdeck.shuffle();
+    var copy2 = JSON.parse(JSON.stringify(bjdeck));
+    bjdeck.shuffle();
+    var copy3 = JSON.parse(JSON.stringify(bjdeck));
+    expect(copy1).not.toEqual(copy2);
+    expect(copy1).not.toEqual(copy3);
+    expect(copy2).not.toEqual(copy3);
+  });
+
+  it('should return the number of remaining Cards in BlackjackDeck when numCardsLeft() function is called', function() {
+    var bjdeck = new BlackjackDeck(1);
+    var l1 = bjdeck.numCardsLeft();
+    var card1 = bjdeck.draw();
+    var l2 = bjdeck.numCardsLeft();
+    var card2 = bjdeck.draw();
+    var l3 = bjdeck.numCardsLeft();
+    expect(l1).not.toEqual(l2);
+    expect(l2).not.toEqual(l3);
+  });
+
+});

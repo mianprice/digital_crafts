@@ -56,8 +56,12 @@ Deck.prototype = {
   draw : function() {
     return this.cards.shift();
   },
-  getRandomIndex : function() {
-    return Math.floor(Math.random() * (this.cards.length - 1));
+  getRandomIndex : function(min,max) {
+    if (min !== undefined && max !== undefined) {
+      return Math.floor((Math.random() * (max - min)) + min);
+    } else {
+      return Math.floor(Math.random() * (this.cards.length - 1));
+    }
   },
   shuffle : function() {
     var shuffled = [];
@@ -68,5 +72,31 @@ Deck.prototype = {
   },
   numCardsLeft : function() {
     return this.cards.length;
+  }
+};
+
+function BlackjackDeck(num_decks) {
+  Hand.call(this);
+  var d = new Deck();
+  for (var i = 0; i < num_decks; i++) {
+    this.cards = this.cards.concat(d.cards);
+  }
+  var red = Deck.prototype.getRandomIndex.call(this,(this.cards.length * 0.25),(this.cards.length * 0.75));
+  console.log(red);
+  this.cards.splice(red,0,new Card("red","red"));
+}
+
+BlackjackDeck.prototype = {
+  draw : function() {
+    return Deck.prototype.draw.call(this);
+  },
+  getRandomIndex : function(min,max) {
+    return Deck.prototype.getRandomIndex.call(this,min,max);
+  },
+  shuffle : function() {
+    Deck.prototype.shuffle.call(this);
+  },
+  numCardsLeft : function() {
+    return Deck.prototype.numCardsLeft.call(this);
   }
 };
