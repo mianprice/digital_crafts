@@ -49,6 +49,7 @@ function Deck() {
     Hand.prototype.addCard.call(this,new Card(i, "hearts"));
     Hand.prototype.addCard.call(this,new Card(i, "diamonds"));
     Hand.prototype.addCard.call(this,new Card(i, "clubs"));
+    this.shuffle();
   }
 }
 
@@ -66,9 +67,11 @@ Deck.prototype = {
   shuffle : function() {
     var shuffled = [];
     while (this.cards.length > 0) {
-      shuffled.push(this.cards.splice(this.getRandomIndex(),1));
+      var place = this.cards.splice(this.getRandomIndex(),1);
+      shuffled.push(place[0]);
     }
     this.cards = shuffled;
+    console.log("shuffling");
   },
   numCardsLeft : function() {
     return this.cards.length;
@@ -77,33 +80,23 @@ Deck.prototype = {
 
 function BlackjackDeck(num_decks) {
   Hand.call(this);
-  var d = new Deck();
+  var d;
   for (var i = 0; i < num_decks; i++) {
+    d = new Deck();
     this.cards = this.cards.concat(d.cards);
+    this.shuffle();
   }
   var red = Deck.prototype.getRandomIndex.call(this,(this.cards.length * 0.25),(this.cards.length * 0.75));
   this.cards.splice(red,0,new Card("red","red"));
 }
 
-BlackjackDeck.prototype = {
-  draw : function() {
-    return Deck.prototype.draw.call(this);
-  },
-  getRandomIndex : function(min,max) {
-    return Deck.prototype.getRandomIndex.call(this,min,max);
-  },
-  shuffle : function() {
-    Deck.prototype.shuffle.call(this);
-  },
-  numCardsLeft : function() {
-    return Deck.prototype.numCardsLeft.call(this);
-  }
-};
+BlackjackDeck.prototype = Object.create(Deck.prototype);
 
 
 // Variable Declarations
 var num_decks = 6;
-var currentDeck = new BlackjackDeck();
+var currentDeck = new BlackjackDeck(num_decks);
+console.log(currentDeck);
 var players = [];
 players[0] = {
   "name": "player",
@@ -121,7 +114,9 @@ var nextDeck = false;
 // Helper Functions
 function reset() {
   if (nextDeck) {
-    currentDeck = new Deck();
+    currentDeck = new BlackjackDeck(num_decks);
+    currentDeck.shuffle();
+    console.log(currentDeck);
   }
   $(".hand").empty();
   $("#messages").text("");
@@ -146,8 +141,10 @@ function deal(toPlayer) {
     nextCard = currentDeck.draw();
     nextDeck = true;
   }
+  console.log(nextCard);
   toPlayer.hand.addCard(nextCard);
-  $("#" + toPlayer.name + "-hand").append("<img src='" + getCardImageUrl(nextCard) + "'>");
+  console.log(nextCard);
+  $("#" + toPlayer.name + "-hand").append("<img src='" + nextCard.getImageUrl() + "'>");
   $("#" + toPlayer.name + "-points").text(toPlayer.hand.getPoints());
   bust(toPlayer);
 }
@@ -165,6 +162,7 @@ function dealerLogic() {
       } else {
         $("#messages").text("You lose! Click DEAL to play again.");
       }
+      bust(players[1]);
     }
   },500);
 }
@@ -182,7 +180,7 @@ function bust(toPlayer) {
 
 // jQuery document.ready
 $(document).ready(function() {
-$("#deal-button").click(function() {
+  $("#deal-button").click(function() {
     initialDeal();
   });
   $("#hit-button").click(function() {
