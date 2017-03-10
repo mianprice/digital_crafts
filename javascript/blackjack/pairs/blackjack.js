@@ -23,7 +23,7 @@ function getCardImageUrl(obj) {
     name = obj.point === 1 ? "ace" : obj.point;
   }
   suit = obj.suit;
-  return name + "_of_" + obj.suit + ".png";
+  return "images/" + name + "_of_" + suit + ".png";
 }
 function calculatePoints(cards) {
   cards.sort(function(a,b) {
@@ -81,9 +81,6 @@ function initialDeal() {
   }
 }
 function deal(toPlayer) {
-  // if (currentDeck.length === 0) {
-  //   currentDeck = newDeck();
-  // }
   var nextCard = currentDeck.shift();
   if (nextCard.point === "stop") {
     nextCard = currentDeck.shift();
@@ -158,4 +155,3 @@ $("input").click(function() {
   num_decks = $(this).val();
 });
 }); // end of ready
-Add Comment
