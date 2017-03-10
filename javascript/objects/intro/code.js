@@ -43,7 +43,6 @@ Hand.prototype = {
 
 function Deck() {
   Hand.call(this);
-  //this.prototype = Hand.prototype;
   for (var i = 1; i < 14; i++) {
     Hand.prototype.addCard.call(this,new Card(i, "spades"));
     Hand.prototype.addCard.call(this,new Card(i, "hearts"));
@@ -82,7 +81,6 @@ function BlackjackDeck(num_decks) {
     this.cards = this.cards.concat(d.cards);
   }
   var red = Deck.prototype.getRandomIndex.call(this,(this.cards.length * 0.25),(this.cards.length * 0.75));
-  console.log(red);
   this.cards.splice(red,0,new Card("red","red"));
 }
 
