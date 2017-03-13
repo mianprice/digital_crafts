@@ -574,10 +574,6 @@ body {
     width: 400px;
 }
 
-#section1 {
-    height: 100px;
-}
-
 .section {
     background-color: yellow;
     margin: 10px;
@@ -750,9 +746,6 @@ article h4{
 	text-transform: uppercase;
 	letter-spacing: 2px;
 }
-
-
-
 
 
 h5{
