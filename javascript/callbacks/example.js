@@ -7,23 +7,6 @@ const dns = require('dns');
 const fs = require('fs');
 const http = require('http');
 
-// http.get({host: '54.70.232.116'}, function(err, resp) {
-//   console.log(resp);
-//   if (err) throw err;
-//   var str = '';
-//   resp.on('data', function(chunk) {
-//     str += chunk;
-//   });
-//   // Save the Returned HTML File to the Filename that User Entered
-//   console.log(str);
-//   // fs.writeFile(filename, str, function(err) {
-//   //   if (err) throw err;
-//   //   console.log("Done writing file!");
-//   // });
-// });
-// throw "stop execution";
-//
-
 // Prompt User for Domain Name
 rl.question('What domain do you want to look up?', function(name) {
   console.log("Now looking up " + name);
