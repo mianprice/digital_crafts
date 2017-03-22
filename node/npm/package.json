@@ -7,5 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ian Price",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.5",
+    "cheerio": "^0.22.0",
+    "lodash": "^4.17.4",
+    "marked": "^0.3.6",
+    "request": "^2.81.0"
+  }
 }
