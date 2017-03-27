@@ -1,0 +1,10 @@
+INSERT INTO restaurants values ('Jason''s Deli', 0.2, 4, 'Lunch', 'Club Royale', TRUE, '2017-03-21');
+INSERT INTO restaurants values ('Fuji Hana', 12.5, 5, 'Dinner and Drinks', 'Ahi Poke', TRUE, '2017-03-12');
+INSERT INTO restaurants values ('Chick Fil A', 18.0, 4, 'Fast Food', 'Original Chicken Sandwich', TRUE, '2017-03-22');
+INSERT INTO restaurants values ('Star Daepo', 20.1, 5, 'Dinner and Drinks', '4 Meat Special', FALSE, '2017-03-25');
+INSERT INTO restaurants values ('Corner Bakery', 7.6, 3, 'Lunch', 'BBLT', TRUE, '2017-02-14');
+INSERT INTO restaurants values ('Panda Express', 13.1, 4, 'Fast Food', 'Chow Mein, Orange Chicken, and Broccoli Beef', TRUE, '2017-03-23');
+INSERT INTO restaurants values ('Smoothie King', 0.1, 3, 'Fast Food', 'Strawberry-Kiwi Breeze', TRUE, '2017-03-13');
+INSERT INTO restaurants values ('The Mill', 13.1, 5, 'Dinner and Drinks', 'Calamari', FALSE, '2017-03-01');
+INSERT INTO restaurants values ('Taco Mac', 4.5, 3, 'Dinner and Drinks', 'Beer', FALSE, '2017-03-18');
+INSERT INTO restaurants values ('Biscuits and More', 16.2, 4, 'Breakfast', 'Chicken Biscuit', TRUE, '2017-03-25');
