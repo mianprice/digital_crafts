@@ -10,7 +10,8 @@ class LinkedList:
         self.last = None
         self.size = 0
 
-    def queue(self, new_node):
+    def queue(self, new_node_value):
+        new_node = Node(new_node_value)
         if self.size == 0:
             self.first = new_node
             self.last = new_node
