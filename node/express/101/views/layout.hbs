@@ -3,10 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Express 101 Exercises</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body style="border: 5px solid blue">
+  <body>
     <h1>This is the layout template</h1>
-    <div style="border: 5px solid red">
+    <ul class="nav">
+      <li><a href="http://localhost:3000/">Hello World</a></li>
+      <li><a href="http://localhost:3000/cats"><br>Cats</a></li>
+      <li><a href="http://localhost:3000/dogs"><br>Dogs</a></li>
+      <li><a href="http://localhost:3000/cats_and_dogs">Cats and Dogs</a></li>
+      <li><a href="http://localhost:3000/fav_animals">Favorite Animals</a></li>
+    </ul>
+    <div class="body-template">
       {{{body}}}
     </div>
   </body>
