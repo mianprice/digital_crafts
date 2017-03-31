@@ -25,6 +25,11 @@ app.get('/greet/:name', function(req, res) {
   res.send("Hello " + req.params.name);
 });
 
+// QUERY PARAMETERS
+app.get('/year', function(req, res) {
+  res.send("You were born in " + (2017 - req.query.age).toString());
+});
+
 // TURN ON SERVER
 app.listen(3000, function() {
   console.log('ex.js listening on port 3000');
