@@ -14,37 +14,35 @@ var animalsArray = [
 
 // BASIC
 app.get('/', function(req, res) {
-  res.send("Hello World!");
+  res.render('hello.hbs');
 });
 
 // ROUTES
 app.get('/cats', function(req, res) {
-  res.send("Meow");
+  res.render('cats.hbs');
 });
 
 app.get('/dogs', function(req, res) {
-  res.send("Woof");
+  res.render('dogs.hbs');
 });
 
 app.get('/cats_and_dogs', function(req, res) {
-  res.send("Living together");
+  res.render('cats_and_dogs.hbs');
 });
 
 // ROUTE PARAMETERS (AND TEMPLATE 1)
 app.get('/greet/:name', function(req, res) {
-  if (req.query.age !== undefined) {
-    res.render('greet.hbs', {
-      name: req.params.name,
-      year: 2017 - req.query.age
-    });
-  } else {
-    res.send("Hello " + req.params.name);
-  }
+  res.render('greet.hbs', {
+    name: req.params.name,
+    year: req.query.age !== undefined ? 2017 - req.query.age : req.query.age
+  });
 });
 
 // QUERY PARAMETERS
 app.get('/year', function(req, res) {
-  res.send("You were born in " + (2017 - req.query.age).toString());
+  res.render('year.hbs', {
+    year: 2017 - req.query.age
+  });
 });
 
 // TEMPLATE 2
