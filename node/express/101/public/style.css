@@ -25,5 +25,21 @@ body {
 }
 
 .body-template {
-  border: 5px solid red
+  border: 5px solid red;
+  text-align:center;
+}
+
+table {
+  width: 100%;
+  background-color: darkgrey;
+}
+
+th {
+  border: 5px solid black;
+  background-color: lightgrey;
+}
+
+td {
+  border: thin green solid;
+  background-color: lightgrey;
 }

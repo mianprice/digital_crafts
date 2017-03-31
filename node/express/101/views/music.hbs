@@ -1,0 +1,17 @@
+<h2>Music</h2>
+<table>
+  <thead>
+    {{#each keys}}
+      <th>{{this}}</th>
+    {{/each}}
+  </thead>
+  <tbody>
+    {{#each lines as |line|}}
+      <tr>
+        {{#each line as |val|}}
+          <td>{{val}}</td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
