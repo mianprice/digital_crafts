@@ -28,7 +28,6 @@ hashTable.insert('1test')
 
 print hashTable.buckets
 
-
 print hashTable.exists('hello')
 print hashTable.exists('xkcd')
 print hashTable.exists('testing')
