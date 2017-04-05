@@ -1,5 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+
+var n = new Date();
+if (!fs.existsSync('logs.txt')) {
+  fs.writeFileSync('logs.txt', `Log file for Express App :: Created on ${n.toDateString()} at ${n.toTimeString()}`);
+}
 
 var app = express();
 
@@ -7,8 +13,15 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'hbs');
 
-app.use(function logger(req,res,next) {
-  console.log(`Method: ${req.method} || Path: ${req.path}`);
+// Shell Logger Middleware
+// app.use(function logger(req,res,next) {
+//   console.log(`Method: ${req.method} || Path: ${req.path}`);
+//   next();
+// });
+
+// Logfile Logger Middleware
+app.use(function logToFile(req,res,next) {
+  fs.appendFileSync('logs.txt', `\nMethod: ${req.method} || Path: ${req.path}`);
   next();
 });
 
