@@ -11,12 +11,22 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      .choice {text-align: center;}
+      .choice > input {font-size: 30px; width: 60%; float: left;}
+      .choice > button {font-size: 30px; line-height: 1em; margin-left: 10%; width: 30%; float: left;}
     </style>
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.7.2/release/featherlight.min.css" type="text/css" rel="stylesheet" />
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="//cdn.rawgit.com/noelboss/featherlight/1.7.2/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
     <script>
       $(() => {
         var socket = io();
+        $('body').on('click', '#choose-name', () => {
+          socket.emit('name', $('#name').val());
+          $.featherlight.current().close();
+        });
+        $.featherlight('<div class="choice"><h1>Enter Your Nickname Below</h1><input type="text" id="name"><button id="choose-name">Enter</button></div>');
         $('form').submit(() => {
           socket.emit('message', $('#m').val());
           $('#messages').append($('<li>').text(`You:: ${$('#m').val()}`))

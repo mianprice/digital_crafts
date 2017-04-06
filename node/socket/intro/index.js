@@ -1,23 +1,23 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+var names = {};
 
 app.get('/', (req,res) => {
   res.sendFile(__dirname + '/app.html');
 });
 
 io.on('connection', (socket) => {
-  var connection_msg = `A user connected. Socket ID: ${socket.id}`;
-  console.log(connection_msg);
-  io.emit('message', connection_msg);
+  socket.on('name', (name) => {
+    names[`${socket.id}`] = name;
+    console.log(name);
+    io.emit('message', `>> ${name} << connected`);
+  });
   socket.on('disconnect', () => {
-    var disconnect_msg = `A user disconnected. Socket ID ${socket.id}`;
-    console.log(connection_msg);
-    io.emit('message', disconnect_msg);
+    io.emit('message', `>> ${names[socket.id]} << disconnected`);
   });
   socket.on('message', (msg) => {
-    var message = `${socket.id}:: ${msg}`;
-    console.log(message);
+    var message = `>> ${names[socket.id]} << ${msg}`;
     socket.broadcast.emit('message', message);
   });
 });
