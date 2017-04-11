@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="weather.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      input {
+        display: block;
+        width:20vw;
+        margin-left: 30vw;
+        height: 5vh;
+        margin-top: 1vh;
+        float: left;
+        text-align: center;
+        font-size: 2.5vh;
+      }
+      a {
+        display: block;
+        width:20vw;
+        margin-right: 30vw;
+        height: 5vh;
+        margin-top: 1vh;
+        float: left;
+        text-align: center;
+        font-size: 2.5vh;
+        line-height: 5vh;
+        background-color: lightgrey;
+      }
+      #show-weather:hover {
+        background-color: darkgrey;
+      }
+      #results {
+        float: left;
+        width: 100vw;
+        height: 94vh;
+        overflow:scroll;
+      }
+      table {
+        border: thin black solid;
+        border-collapse: collapse;
+        width: 100vw;
+      }
+      td:first-child {
+        font-weight:bold;
+        text-align: right;
+        padding: 3px;
+      }
+      td:last-child {
+        text-align: left;
+        padding: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="zip" placeholder="Enter ZIP Code">
+    <a id="show-weather">Show Current Weather</a>
+    <div id="results"></div>
+  </body>
+</html>

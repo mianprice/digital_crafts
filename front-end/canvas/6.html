@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Draw a target</title>
+  </head>
+  <style media="screen">
+    canvas {
+      border: thin solid black;
+    }
+  </style>
+  <body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+
+      var sw = true;
+      for (var i = 250; i > 0; i -= 50) {
+        ctx.beginPath();
+        if (sw) {
+          ctx.fillStyle = 'red';
+        } else {
+          ctx.fillStyle = 'white';
+        }
+        ctx.ellipse(250,250,i,i,0,0,Math.PI * 2);
+        ctx.fill();
+        sw = !sw;
+      }
+
+    </script>
+  </body>
+</html>

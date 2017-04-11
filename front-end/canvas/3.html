@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Draw 2 Rectangles Next inside each other</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = 'blue';
+      ctx.fillRect(30,40,100,200)
+      ctx.fillStyle = 'green';
+      ctx.fillRect(55,90,50,100);
+
+    </script>
+  </body>
+</html>
