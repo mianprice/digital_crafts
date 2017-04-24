@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap Button</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+      .btn {
+        float: left;
+      }
+
+      .btn-success {
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript">
+
+    </script>
+    <script type="text/babel" data-presets="react">
+
+    class BSButton extends React.Component {
+      render() {
+        let classes = ['btn'];
+        if (this.props.type) {
+          classes.push('btn-' + this.props.type);
+        } else {
+          classes.push('btn-default');
+        }
+        if (this.props.size) {
+          classes.push('btn-' + this.props.size);
+        }
+        return (
+          <button className={classes.join(" ")}>{this.props.children}</button>
+        );
+      }
+    }
+    class BSFormGroup extends React.Component {
+      render() {
+        return (
+          <div className="form-group">
+            <label>{this.props.label}</label>
+            <input type={this.props.type} name={this.props.name}/>
+          </div>
+        );
+      }
+    }
+
+    class BSForm extends React.Component {
+      render() {
+        return (
+          <form>
+            {this.props.children}
+            <BSButton>Submit</BSButton>
+          </form>
+        );
+      }
+    }
+    els = [
+      {
+        "label": "What is your name?",
+        "type": "text",
+        "name": "name"
+      },
+      {
+        "label": "What is your favorite color?",
+        "type": "text",
+        "name": "color"
+      },
+      {
+        "label": "If you were an animal, what animal would you be?",
+        "type": "text",
+        "name": "animal"
+      }
+    ];
+
+    ReactDOM.render(
+      <BSForm>
+        <BSFormGroup label={els[0].label} type={els[0].type} name={els[0].name}/>
+        <BSFormGroup label={els[1].label} type={els[1].type} name={els[1].name}/>
+        <BSFormGroup label={els[2].label} type={els[2].type} name={els[2].name}/>
+      </BSForm>,
+      document.getElementById('root'));
+    </script>
+  </body>
+</html>

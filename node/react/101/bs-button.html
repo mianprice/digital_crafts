@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap Button</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+      .btn {
+        float: left;
+      }
+
+      .btn-success {
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="react">
+
+    class BSButton extends React.Component {
+      render() {
+        let classes = ['btn'];
+        if (this.props.type) {
+          classes.push('btn-' + this.props.type);
+        } else {
+          classes.push('btn-default');
+        }
+        if (this.props.size) {
+          classes.push('btn-' + this.props.size);
+        }
+        return (
+          <button className={classes.join(" ")}>{this.props.children}</button>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <form>
+        <BSButton type="success" size="lg">Click Me!</BSButton>
+        <BSButton type="danger" size="lg">Click Me!</BSButton>
+        <BSButton type="primary" size="lg">Click Me!</BSButton>
+        <BSButton type="info" size="lg">Click Me!</BSButton>
+        <BSButton type="warning" size="lg">Click Me!</BSButton>
+        <BSButton type="link" size="lg">Click Me!</BSButton>
+        <BSButton size="lg">Click Me!</BSButton>
+        <BSButton type="success">Click Me!</BSButton>
+        <BSButton type="danger">Click Me!</BSButton>
+        <BSButton type="primary">Click Me!</BSButton>
+        <BSButton type="info">Click Me!</BSButton>
+        <BSButton type="warning">Click Me!</BSButton>
+        <BSButton type="link">Click Me!</BSButton>
+        <BSButton>Click Me!</BSButton>
+        <BSButton type="success" size="sm">Click Me!</BSButton>
+        <BSButton type="danger" size="sm">Click Me!</BSButton>
+        <BSButton type="primary" size="sm">Click Me!</BSButton>
+        <BSButton type="info" size="sm">Click Me!</BSButton>
+        <BSButton type="warning" size="sm">Click Me!</BSButton>
+        <BSButton type="link" size="sm">Click Me!</BSButton>
+        <BSButton size="sm">Click Me!</BSButton>
+        <BSButton type="success" size="xs">Click Me!</BSButton>
+        <BSButton type="danger" size="xs">Click Me!</BSButton>
+        <BSButton type="primary" size="xs">Click Me!</BSButton>
+        <BSButton type="info" size="xs">Click Me!</BSButton>
+        <BSButton type="warning" size="xs">Click Me!</BSButton>
+        <BSButton type="link" size="xs">Click Me!</BSButton>
+        <BSButton size="xs">Click Me!</BSButton>
+      </form>,
+      document.getElementById('root'));
+    </script>
+  </body>
+</html>
