@@ -2,26 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap Button</title>
+    <title>Bootstrap Form</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-      .btn {
-        float: left;
-      }
-
-      .btn-success {
-        clear: left;
+      * {
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <div id="root"></div>
-    <script type="text/javascript">
-
-    </script>
     <script type="text/babel" data-presets="react">
 
     class BSButton extends React.Component {
@@ -40,12 +33,75 @@
         );
       }
     }
+
     class BSFormGroup extends React.Component {
       render() {
+        var next;
+        switch (this.props.type) {
+          case "text":
+            next = <input className="form-control" type={this.props.type} name={this.props.name}/>;
+            break;
+          case "textarea":
+            next = <textarea className="form-control" name={this.props.name} rows={this.props.other.rows}/>;
+            break;
+          case "select":
+            const options = this.props.other.options.map((element) => {
+              return <option>{element}</option>;
+            });
+            next =
+              <select className="form-control" name={this.props.name}>
+                {options}
+              </select>;
+            break;
+          case "radio":
+            if (this.props.other.group) {
+              next = this.props.other.options.map((element) => {
+                return (
+                  <div className={this.props.type}>
+                    <label>
+                      <input type={this.props.type} value={element} name={this.props.name}/>
+                      {element}
+                    </label>
+                  </div>
+                );
+              });
+            } else {
+              next = (
+                <div className={this.props.type}>
+                  <label>
+                    <input type={this.props.type} value={this.props.name} name={this.props.name}/>
+                  </label>
+                </div>
+              );
+            }
+            break;
+          case "checkbox":
+          if (this.props.other.group) {
+            next = this.props.other.options.map((element) => {
+              return (
+                <div className={this.props.type}>
+                  <label>
+                    <input type={this.props.type} value={element} name={this.props.name}/>
+                    {element}
+                  </label>
+                </div>
+              );
+            });
+          } else {
+            next = (
+              <div className={this.props.type}>
+                <label>
+                  <input type={this.props.type} value={this.props.name} name={this.props.name}/>
+                </label>
+              </div>
+            );
+          }
+            break;
+        }
         return (
           <div className="form-group">
             <label>{this.props.label}</label>
-            <input type={this.props.type} name={this.props.name}/>
+            {next}
           </div>
         );
       }
@@ -61,30 +117,87 @@
         );
       }
     }
-    els = [
+    const els = [
       {
         "label": "What is your name?",
         "type": "text",
-        "name": "name"
+        "name": "name",
+        "other": {}
       },
       {
         "label": "What is your favorite color?",
-        "type": "text",
-        "name": "color"
+        "type": "select",
+        "name": "color",
+        "other": {
+          "options": [
+            "Red",
+            "Orange",
+            "Yellow",
+            "Green",
+            "Blue",
+            "Indigo",
+            "Violet"
+          ]
+        }
       },
       {
-        "label": "If you were an animal, what animal would you be?",
-        "type": "text",
-        "name": "animal"
+        "label": "Check the box next to each animal you like.",
+        "type": "checkbox",
+        "name": "liked_animals",
+        "other": {
+          "group": true,
+          "options": [
+            "Giraffe",
+            "Hippo",
+            "Platypus",
+            "Wombat",
+            "Fox",
+            "Hermit Crab",
+            "Penguin"
+          ]
+        }
+      },
+      {
+        "label": "Check the box if you like sharks.",
+        "type": "checkbox",
+        "name": "like_sharks",
+        "other": {
+          "group": false
+        }
+      },
+      {
+        "label": "Which of the below is your favorite animal?",
+        "type": "radio",
+        "name": "color",
+        "other": {
+          "group": true,
+          "options": [
+            "Dog",
+            "Cat",
+            "Snake",
+            "Rabbit",
+            "Gecko",
+            "Hedgehog",
+            "Otter"
+          ]
+        }
+      },
+      {
+        "label": "If you were an animal, what animal would you be and why?",
+        "type": "textarea",
+        "name": "animal_why",
+        "other": {
+          "rows": 5
+        }
       }
-    ];
+    ].map((element) => {
+      return (
+        <BSFormGroup label={element.label} type={element.type} name={element.name} other={element.other}/>
+      );
+    });
 
     ReactDOM.render(
-      <BSForm>
-        <BSFormGroup label={els[0].label} type={els[0].type} name={els[0].name}/>
-        <BSFormGroup label={els[1].label} type={els[1].type} name={els[1].name}/>
-        <BSFormGroup label={els[2].label} type={els[2].type} name={els[2].name}/>
-      </BSForm>,
+      <BSForm>{els}</BSForm>,
       document.getElementById('root'));
     </script>
   </body>
