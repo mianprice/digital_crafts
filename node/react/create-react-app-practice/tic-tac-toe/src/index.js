@@ -18,7 +18,21 @@ class TicTacToe extends React.Component{
     this.state = {
       player: 'X',
       game: ["","","","","","","","",""],
-      message: 'Player 1, make your move'
+      message: 'Player 1, make your move',
+      scoreboard: [
+        {
+          name: 'Player 1',
+          score: 0
+        },
+        {
+          name: 'Draw',
+          score: 0
+        },
+        {
+          name: 'Player 2',
+          score: 0
+        }
+      ]
     };
   }
   markSquare(ind) {
@@ -36,32 +50,70 @@ class TicTacToe extends React.Component{
       });
     }
   }
+  reset() {
+    let winner;
+    let new_scoreboard = this.state.scoreboard;
+    let game_win = combos.some((c) => {
+      return c.every((i) => {
+        winner = this.state.game[i];
+        return this.state.game[i] === (this.state.player === 'X' ? 'O' : 'X');
+      });
+    });
+    if (game_win) {
+      if (winner === 'X') {
+        new_scoreboard[0].score += 1;
+      } else {
+        new_scoreboard[2].score += 1;
+      }
+      this.setState({
+        player: 'X',
+        game: ["","","","","","","","",""],
+        message: 'Player 1, make your move',
+        scoreboard: new_scoreboard
+      });
+    } else {
+      new_scoreboard[1].score += 1;
+      this.setState({
+        player: 'X',
+        game: ["","","","","","","","",""],
+        message: 'Player 1, make your move',
+        scoreboard: new_scoreboard
+      });
+    }
+  }
   render() {
     let game_win = combos.some((c) => {
       return c.every((i) => {
         return this.state.game[i] === (this.state.player === 'X' ? 'O' : 'X');
       });
     });
-
     let game_draw = (this.state.game.reduce((x,y) => {return x + y},"")).length === 9;
-
     return (
       <div className="ttt">
         <div className="status">
-          <div className="message">{game_win ? `Game over. Player ${this.state.player === 'X' ? '2' : '1'} has won!` : (game_draw ? `Game over.  It's a draw.` : this.state.message)}</div>
+          <div className="title">Tic Tac Toe</div>
+          <div className="message">
+            <div className="innerMessage">
+              {game_win ? `Game over. Player ${this.state.player === 'X' ? '2' : '1'} has won!` : (game_draw ? `Game over.  It's a draw.` : this.state.message)}
+            </div>
+            <div className={game_win || game_draw ? "reset" : "noreset"} onClick={(event) => {this.reset()}}>
+              Start Over
+            </div>
+          </div>
         </div>
         <div className="board">
-          <div className="cell" onClick={(event) => {this.markSquare(0)}}>{this.state.game[0] === "X" ? "X" : (this.state.game[0] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(1)}}>{this.state.game[1] === "X" ? "X" : (this.state.game[1] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(2)}}>{this.state.game[2] === "X" ? "X" : (this.state.game[2] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(3)}}>{this.state.game[3] === "X" ? "X" : (this.state.game[3] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(4)}}>{this.state.game[4] === "X" ? "X" : (this.state.game[4] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(5)}}>{this.state.game[5] === "X" ? "X" : (this.state.game[5] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(6)}}>{this.state.game[6] === "X" ? "X" : (this.state.game[6] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(7)}}>{this.state.game[7] === "X" ? "X" : (this.state.game[7] === "O" ? "O" : "")}</div>
-          <div className="cell" onClick={(event) => {this.markSquare(8)}}>{this.state.game[8] === "X" ? "X" : (this.state.game[8] === "O" ? "O" : "")}</div>
+          {this.state.game.map((element,idx) => (
+            <div className="cell" onClick={(event) => {game_draw || game_win ? event.preventDefault() : this.markSquare(idx)}}><i className={this.state.game[idx] === "X" ? "fa fa-fw fa-times" : (this.state.game[idx] === "O" ? "fa fa-fw fa-circle-o" : "")}></i></div>
+          ))}
         </div>
-        <div className="scoreboard"></div>
+        <div className="scoreboard">
+          {this.state.scoreboard.map((element,idx) => (
+            <div key={idx} className="scorecard">
+              <div className="winner"><div className="text_contain">{this.state.scoreboard[idx].name}</div></div>
+              <div className="score"><div className="text_contain">{this.state.scoreboard[idx].score}</div></div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
