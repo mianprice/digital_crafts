@@ -21,7 +21,7 @@ class TicTacToe extends React.Component{
       message: 'Player 1, make your move',
       scoreboard: [
         {
-          name: 'Player 1',
+          name: 'P1',
           score: 0
         },
         {
@@ -29,7 +29,7 @@ class TicTacToe extends React.Component{
           score: 0
         },
         {
-          name: 'Player 2',
+          name: 'P2',
           score: 0
         }
       ]
@@ -94,25 +94,33 @@ class TicTacToe extends React.Component{
           <div className="title">Tic Tac Toe</div>
           <div className="message">
             <div className="innerMessage">
-              {game_win ? `Game over. Player ${this.state.player === 'X' ? '2' : '1'} has won!` : (game_draw ? `Game over.  It's a draw.` : this.state.message)}
+              {game_win ? `Game over. Player ${this.state.player === 'X' ? '2' : '1'} wins!` : (game_draw ? `Game over.  It's a draw.` : this.state.message)}
             </div>
             <div className={game_win || game_draw ? "reset" : "noreset"} onClick={(event) => {this.reset()}}>
               Start Over
             </div>
           </div>
         </div>
-        <div className="board">
-          {this.state.game.map((element,idx) => (
-            <div className="cell" onClick={(event) => {game_draw || game_win ? event.preventDefault() : this.markSquare(idx)}}><i className={this.state.game[idx] === "X" ? "fa fa-fw fa-times" : (this.state.game[idx] === "O" ? "fa fa-fw fa-circle-o" : "")}></i></div>
-          ))}
-        </div>
-        <div className="scoreboard">
-          {this.state.scoreboard.map((element,idx) => (
-            <div key={idx} className="scorecard">
-              <div className="winner"><div className="text_contain">{this.state.scoreboard[idx].name}</div></div>
-              <div className="score"><div className="text_contain">{this.state.scoreboard[idx].score}</div></div>
+        <div className="body_area">
+          <div className="board">
+            {this.state.game.map((element,idx) => (
+              <div className="cell" key={idx} onClick={(event) => {game_draw || game_win ? event.preventDefault() : this.markSquare(idx)}}><div className="text_contain"><i className={this.state.game[idx] === "X" ? "fa fa-fw fa-times" : (this.state.game[idx] === "O" ? "fa fa-fw fa-circle-o" : "")}></i></div></div>
+            ))}
+          </div>
+          <div className="scoreboard">
+            <div className="scorecard">
+              <div className="score_title"><div className="text_contain">Scoreboard</div></div>
             </div>
-          ))}
+            {this.state.scoreboard.map((element,idx) => (
+              <div key={idx} className="scorecard">
+                <div className="winner"><div className="text_contain">{this.state.scoreboard[idx].name}</div></div>
+                <div className="score"><div className="text_contain">{this.state.scoreboard[idx].score}</div></div>
+              </div>
+            ))}
+          </div>
+          <div className={game_win || game_draw ? "reset" : "noreset"} onClick={(event) => {this.reset()}}>
+            Start Over
+          </div>
         </div>
       </div>
     );
