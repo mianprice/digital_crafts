@@ -6,6 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
       * {
         box-sizing: border-box;
@@ -31,7 +32,7 @@
     class Clock extends React.Component{
       constructor(props) {
         super(props);
-        this.state = {date: new Date()};
+        this.state = {date: new Date().toLocaleTimeString()};
       }
       componentDidMount() {
         this.timerID = setInterval(
@@ -43,12 +44,14 @@
         clearInterval(this.timerID);
       }
       tick() {
+        let t = new Date().toLocaleTimeString();
+        $('title').text(t);
         this.setState({
-          date: new Date()
+          date: t
         });
       }
       render() {
-        return <h1>{this.state.date.toLocaleTimeString()}</h1>;
+        return <h1>{this.state.date}</h1>;
       }
     }
     ReactDOM.render(<Clock/>, document.getElementById('root'));
