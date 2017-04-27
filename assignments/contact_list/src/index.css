@@ -37,11 +37,19 @@ body {
   background-color: rgba(128,128,128, 0.8);
 }
 
+.add_contact_wrap {
+  position: absolute;
+  z-index: 9;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .add_contact {
   position: absolute;
-  /*top:20v*/
   z-index: 10;
-  margin: 20vw;
   width: 60vw;
   padding: 2%;
   background-color: rgb(0,0,0);
@@ -85,13 +93,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.create_contact,.go_back {
+  width: 50%;
+  margin: 1% 25%;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .create_contact {
-  width: 50%;
-  padding: 5px;
-  border-radius: 5px;
   background-color: rgb(128,128,128);
+}
+
+.go_back {
+  background-color: rgb(232, 51, 45);
 }
 
 .contact_list {
@@ -104,16 +121,32 @@ body {
   width: 100%;
   padding: 2%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 200%;
   border-bottom: 5px solid rgb(0,0,0);
 }
 
+.app_controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.app_control {
+  font-size: 50%;
+  line-height: 1em;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: rgb(0,0,0);
+  color: white;
+}
+
 .contact {
   width: 100%;
   padding: 0 2%;
-  border-bottom: 3px dashed rgb(128,128,128);
+  border-bottom: 3px dashed rgb(0,0,0);
   height: 7em;
   display: flex;
   flex-direction:column;
@@ -123,12 +156,8 @@ body {
 
 }
 
-.contact:last-child {
-  border-bottom: none;
-}
-
 .c_name {
-  width:40%;
+  width:70%;
   font-size: 125%;
   display: flex;
   align-items: flex-start;
@@ -136,12 +165,21 @@ body {
   margin: 0.25em 0;
 }
 
+.c_name > .text_contain {
+  justify-content: flex-start;
+}
+.c_name > .c_type {
+  min-width: auto;
+  justify-content: center;
+  margin-left: 10px;
+}
+
 .contact i {
   margin-right: 5px;
 }
 
 .c_email,.c_phone {
-  width: 40%;
+  width: 70%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -154,11 +192,12 @@ body {
  padding: 0 5px;
  border-radius: 5px;
  background-color: white;
+ text-transform: capitalize;
 }
 
 .controls {
   height: 5em;
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -167,8 +206,12 @@ body {
   align-content: flex-end;
 }
 
+.contact_control,.app_control,.add_control {
+  cursor: pointer;
+}
+
 .edit,.delete,.favorite {
-  width: 40%;
+  width: 50%;
   height: 40%;
   border-radius: 5px;
   color: white;
