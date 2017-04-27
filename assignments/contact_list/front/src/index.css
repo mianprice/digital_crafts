@@ -94,17 +94,17 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  flex-direction: row-reverse;
 }
 
 .create_contact,.go_back {
-  width: 50%;
-  margin: 1% 25%;
+  margin: 5px;
   padding: 5px;
   border-radius: 5px;
 }
 
 .create_contact {
-  background-color: rgb(128,128,128);
+  background-color: rgb(0, 168, 17);
 }
 
 .go_back {
