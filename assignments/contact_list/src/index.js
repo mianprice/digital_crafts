@@ -35,11 +35,7 @@ class App extends React.Component {
   }
   makeStateChange(str,event) {
     let x = this.state;
-    if (str === 'fave') {
-      x[str] = event.target.checked;
-    } else {
-      x[str] = event.target.value;
-    }
+    x[str] = event.target.value;
     this.setState(x);
   }
   covered(bool) {
