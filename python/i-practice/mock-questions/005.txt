@@ -1,0 +1,30 @@
+Rebuild Facebook Groups
+
+A group can have many users.
+A group can have only one owner.
+A group can have multiple admins.
+A user can have many groups.
+A user can invite another user to the group
+A user that has been invited can accept or decline
+
+ANSWER:
+
+Table 1: User
+	userID primary key
+	name varchar
+
+Table 2: Group
+	groupID primary key
+	name varchar
+
+Table 3: Invite
+	groupID foreign key
+	senderID foreign key (User)
+	responderID foreign key (User)
+	response boolean
+
+Table 4: Membership
+	userID foreign key
+	groupID foreign key
+	admin boolean
+	owenr boolean
