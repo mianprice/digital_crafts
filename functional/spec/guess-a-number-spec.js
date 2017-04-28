@@ -2,14 +2,14 @@ const reducer = require('../guess-a-number');
 const df = require('deep-freeze');
 
 describe('guess a number', () => {
-  xit('initializes a random number', () => {
+  it('initializes a random number', () => {
     // btw, we are violating purity here by generating
     // random numbers here. I will let this one slide though ;)
     expect(typeof reducer(null).number).toEqual('number');
     expect(reducer(null).guess).toEqual(null);
   });
 
-  xit('enters incorrect guess', () => {
+  it('enters incorrect guess', () => {
     const prevState = df({
       number: 5,
       guess: null,
@@ -22,7 +22,7 @@ describe('guess a number', () => {
       });
   });
 
-  xit('enters correct guess', () => {
+  it('enters correct guess', () => {
     const prevState = df({
       number: 5,
       guess: null,

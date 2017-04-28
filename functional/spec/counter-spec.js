@@ -2,23 +2,23 @@ const reducer = require('../counter');
 
 describe('counter', () => {
 
-  xit('initializes to 0', () => {
+  it('initializes to 0', () => {
     expect(reducer(null)).toEqual(0);
   });
 
-  xit('adds 1', () => {
+  it('adds 1', () => {
     expect(reducer(2, '+')).toEqual(3);
   });
 
-  xit('subtracts 1', () => {
+  it('subtracts 1', () => {
     expect(reducer(2, '-')).toEqual(1);
   });
 
-  xit('multiplies numbers', () => {
+  it('multiplies numbers', () => {
     expect(reducer(3, '3')).toEqual(9);
   });
 
-  xit('quits', () => {
+  it('quits', () => {
     expect(reducer(4, 'q')).toEqual('end');
   });
 
