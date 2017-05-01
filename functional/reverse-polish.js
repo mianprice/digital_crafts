@@ -11,32 +11,28 @@ function reducer(state, input) {
       stack: state.stack.concat([Number(input)])
     };
   } else if (input === '+') {
-    let new_stack = state.stack;
-    let args = new_stack.slice(new_stack.length - 2, new_stack.length);
+    let args = state.stack.slice(state.stack.length - 2, state.stack.length);
     let result = args.reduce((b,a) => a + b,0);
     return {
-      stack: new_stack.slice(0, new_stack.length - 2).concat([result])
+      stack: state.stack.slice(0, state.stack.length - 2).concat([result])
     };
   } else if (input === '-') {
-    let new_stack = state.stack;
-    let args = new_stack.slice(new_stack.length - 2, new_stack.length);
+    let args = state.stack.slice(state.stack.length - 2, state.stack.length);
     let result = args.reduce((b,a) => a - b,0);
     return {
-      stack: new_stack.slice(0, new_stack.length - 2).concat([result])
+      stack: state.stack.slice(0, state.stack.length - 2).concat([result])
     };
   } else if (input === '*') {
-    let new_stack = state.stack;
-    let args = new_stack.slice(new_stack.length - 2, new_stack.length);
+    let args = state.stack.slice(state.stack.length - 2, state.stack.length);
     let result = args.reduce((b,a) => a * b,1);
     return {
-      stack: new_stack.slice(0, new_stack.length - 2).concat([result])
+      stack: state.stack.slice(0, state.stack.length - 2).concat([result])
     };
   } else if (input === '/') {
-    let new_stack = state.stack;
-    let args = new_stack.slice(new_stack.length - 2, new_stack.length);
+    let args = state.stack.slice(state.stack.length - 2, state.stack.length);
     let result = args.reduce((b,a) => a / b,1);
     return {
-      stack: new_stack.slice(0, new_stack.length - 2).concat([result])
+      stack: state.stack.slice(0, state.stack.length - 2).concat([result])
     };
   } else if (input === 'q') {
     return {
