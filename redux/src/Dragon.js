@@ -12,28 +12,57 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Redux from 'redux';
+import reducer from './Dragon.reducer';
+
+let store = Redux.createStore(reducer);
 
 class DragonGame extends React.Component {
+  fight() {
+    store.dispatch({
+      type: 'fight',
+      val: Math.random()
+    });
+  }
+  flight() {
+    store.dispatch({
+      type: 'flight'
+    });
+  }
+  reset() {
+    store.dispatch({
+      type:'reset'
+    });
+  }
   render() {
     let message;
+    let controls = (
+      <div>
+        <button onClick={event => {this.fight()}}>
+          Fight
+        </button>
+        <button onClick={event => {this.flight()}}>
+          Flight
+        </button>
+      </div>
+    );
     return (
       <div>
-        <img src="http://img10.deviantart.net/e984/i/2015/287/c/5/red_dragon_by_sandara-d6hpycs.jpg" width="300"/>
+        <img alt="dragon" src="http://img10.deviantart.net/e984/i/2015/287/c/5/red_dragon_by_sandara-d6hpycs.jpg" width="300"/>
         <br/>
-        <label>Dragon: 20</label>&nbsp;
-        <label>Hero: 10</label>
+        <label>Dragon: {this.props.current.dragon}</label>&nbsp;
+        <label>Hero: {this.props.current.hero}</label>
         <br/>
         {message}
         <br/>
-        <button>
-          Fight
-        </button>
-        <button>
-          Flight
-        </button>
+        {controls}
       </div>
     );
   }
 }
 
-ReactDOM.render(<DragonGame/>, document.getElementById('root'));
+function display() {
+  ReactDOM.render(<DragonGame current={store.getState()}/>, document.getElementById('root'));
+}
+display();
+store.subscribe(display);
