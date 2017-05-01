@@ -15,21 +15,34 @@ const IMAGES = [
 let store = Redux.createStore(reducer);
 
 class Gallery extends React.Component {
+  cycle(arg) {
+    store.dispatch({
+      type: 'cycle',
+      l: IMAGES.length,
+      move: arg
+    });
+  }
+  specific(idx) {
+    store.dispatch({
+      type: 'specific',
+      val: idx
+    });
+  }
   render() {
-    let currentImage = this.props.images[0];
+    let currentImage = this.props.images[this.props.curr];
     return (
       <div>
-        <button>
+        <button onClick={event => {this.cycle('-')}}>
           Previous
         </button>
-        <button>
+        <button onClick={event => {this.cycle('+')}}>
           Next
         </button>
         <br/>
           <img src={currentImage} key={currentImage}/>
         <div>
           {this.props.images.map((imageUrl, idx) =>
-            <img key={idx} src={imageUrl} height="60"/>
+            <img  onClick={event => {this.specific(idx)}} key={idx} src={imageUrl} height="60"/>
           )}
         </div>
       </div>
@@ -39,7 +52,7 @@ class Gallery extends React.Component {
 
 function display() {
   ReactDOM.render(
-    <Gallery images={IMAGES}/>,
+    <Gallery curr={store.getState()} images={IMAGES}/>,
     document.getElementById('root')
   );
 }
