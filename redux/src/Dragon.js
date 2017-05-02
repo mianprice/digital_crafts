@@ -35,8 +35,14 @@ class DragonGame extends React.Component {
     });
   }
   render() {
-    let message;
-    let controls = (
+    let message = this.props.current.message;
+    let controls = this.props.current.game_end ? (
+      <div>
+        <button onClick={event => {this.reset()}}>
+          Reset
+        </button>
+      </div>
+      ) : (
       <div>
         <button onClick={event => {this.fight()}}>
           Fight
