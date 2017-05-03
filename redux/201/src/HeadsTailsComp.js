@@ -11,7 +11,7 @@ export class HeadsTails extends React.Component {
       coinDisplay = <img src={imageUrl} alt='coin'/>;
     }
     return (
-      <div>
+      <div className="comp">
         {coinDisplay}
         <button onClick={this.props.flip}>
           Flip!
