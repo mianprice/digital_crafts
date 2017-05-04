@@ -7,16 +7,17 @@ export class TTT extends React.Component {
     ) : (<div></div>);
     return(
       <div>
+        <div className="title">Tic Tac Toe</div>
+        <div className="controls">
+          <div className="message">
+            <div className="c_message">{this.props.game.message}</div>
+            {controlSet}
+          </div>
+        </div>
         <div className="board">
           {this.props.game.board.map((cell, idx) =>
-            <div key={idx} className="gridCell" onClick={(event) => this.props.select(idx)}>{cell}</div>
+            <div key={idx} className="gridCell" onClick={(event) => this.props.select(idx)}><div>{cell}</div></div>
           )}
-        </div>
-        <div className="scoreDisplay">
-
-        </div>
-        <div className="controls">
-          {controlSet}
         </div>
       </div>
     )

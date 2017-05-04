@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import * as Redux from 'redux';
 import * as ReactRedux from 'react-redux';
 import {TTT} from './TTT';
+import {Scoreboard} from './Scoreboard';
 import {reducer as tttReducer} from './TTT.reducer';
 import './index.css';
 
@@ -25,11 +26,22 @@ const TTTContainer = ReactRedux.connect(
   })
 )(TTT);
 
+const ScoreboardContainer = ReactRedux.connect(
+  state => ({scores: state.game.scores}),
+  dispatch => ({
+    select: (index) => dispatch({
+      type: 'select',
+      idx: index
+    })
+  })
+)(Scoreboard);
+
 
 ReactDOM.render(
   <ReactRedux.Provider store={store}>
     <div>
       <TTTContainer/>
+      <ScoreboardContainer/>
     </div>
   </ReactRedux.Provider>,
   document.getElementById('root')
