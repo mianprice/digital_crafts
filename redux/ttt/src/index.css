@@ -19,11 +19,26 @@ body {
   background-color: black;
   padding: 10px 20vw;
   width: 60vw;
-  text-align: center;
   height: 60vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+}
+
+@media (min-width: 800px) {
+  .board {
+    width: 40vw;
+    height: 40vw;
+    padding: 10px 30vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .board {
+    width: 30vw;
+    height: 30vw;
+    padding: 10px 35vw;
+  }
 }
 
 .gridCell {
