@@ -1,10 +1,7 @@
 const INITIAL_STATE = {
   board: ["","","","","","","","",""],
   currentPlayer: "X",
-  is_win: false,
-  is_draw: false,
   is_done: false,
-  winner: undefined,
   scores: {
     player1: 0,
     player2: 0,
@@ -29,14 +26,7 @@ export function reducer(state = INITIAL_STATE, action){
     return state;
   } else if (action.type === 'select') {
     let selection = action.idx;
-    // let new_board = JSON.parse(JSON.stringify(state.board));
-    // new_board[selection] = state.currentPlayer;
-    let no_move;
-    if (state.board[action.idx].length > 0) {
-      no_move = true;
-    } else {
-      no_move = false;
-    }
+    let no_move = state.board[selection].length > 0 || state.is_done;
     let new_board = state.board.map((element, i) => {
       if (element.length > 0) {
         return element;
@@ -44,6 +34,7 @@ export function reducer(state = INITIAL_STATE, action){
         return action.idx === i ? state.currentPlayer : element;
       }
     });
+    new_board = no_move ? state.board : new_board;
     let win_check = combos.some((c) => {
       return c.every((i) => {
         return new_board[i] === state.currentPlayer;
@@ -51,32 +42,21 @@ export function reducer(state = INITIAL_STATE, action){
     });
     let draw_check = (new_board.reduce((a,b) => {return a + b},"")).length === 9;
     let new_score = Object.assign({},state.scores);
-    console.log(new_score);
-    if (win_check) {
+    if (win_check && !no_move) {
       if (state.currentPlayer === 'X') {
         new_score['player1'] += 1;
       } else {
         new_score['player2'] += 1;
       }
-    } else if (draw_check) {
+    } else if (draw_check && !no_move) {
       new_score.draw += 1;
     }
     let c_player = no_move || win_check || draw_check ? state.currentPlayer : (state.currentPlayer === 'X' ? 'O' : 'X');
-    let c_message;
-    if (win_check) {
-      c_message = `${c_player} won the game!`;
-    } else if (draw_check) {
-      c_message = `Its a draw!`;
-    } else {
-      c_message = `${c_player} moves next`;
-    }
+    let c_message = win_check ? `${c_player} won the game!` : (draw_check ? `Its a draw!` : `${c_player} moves next`);
     return {
       board: new_board,
       currentPlayer: c_player,
-      is_win: win_check,
-      is_draw: draw_check,
       is_done: (win_check || draw_check),
-      winner: win_check ? state.currentPlayer : (draw_check ? 'draw' : undefined),
       scores: new_score,
       message: c_message
     };
