@@ -1,5 +1,8 @@
 const INITIAL_STATE = {
-	query: ""
+	query: "",
+	movieData: null,
+	isFetching: false,
+	error: null
 };
 
 export function reducer(state = INITIAL_STATE,action) {
@@ -9,7 +12,24 @@ export function reducer(state = INITIAL_STATE,action) {
 		return Object.assign({}, state, {
 			query: action.val
 		});
-	} else {
-		return state;
+	} else if (action.type === 'movie_info') {
+		return Object.assign({}, state, {
+			movieData: action.payload,
+			isFetching: false,
+			error: null
+		});
+	} else if (action.type === 'fetch_movie') {
+		return Object.assign({}, state, {
+			movieData: null,
+			isFetching: true,
+			error: null
+		});
+	} else if (action.type === 'movie_error') {
+		return Object.assign({}, state, {
+			movieData: null,
+			isFetching: false,
+			error: action.error
+		});
 	}
+	return state;
 };
