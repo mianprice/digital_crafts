@@ -5,19 +5,14 @@ export class MovieWidget extends React.Component {
 		let movie = this.props.search.movieData;
 		let movieDisplay;
 		if (movie) {
+			let movieImages = movie.results.filter((element) => {
+				return element.poster_path !== null;
+			});
 			movieDisplay = (
 				<div className="movies">
-					{movie.results.map((element, idx) =>
+					{movieImages.map((element, idx) =>
 						<div className="movie" key={idx}>
-							<div className="movie_info">{element.overview}</div>
-							<br/>
-							<div className="movie_info">{element.release_date}</div>
-							<br/>
-							<div className="movie_info">{element.title}</div>
-							<br/>
-							<div className="movie_info">{element.popularity}</div>
-							<br/>
-							<div className="movie_info">{element.vote_average}</div>
+							<img src={'https://image.tmdb.org/t/p/w500' + element.poster_path} alt={element.title}/>
 						</div>
 					)}
 				</div>

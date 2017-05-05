@@ -15,6 +15,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.main > div {
+  margin: 25px 0;
 }
 
 .search {
@@ -52,15 +57,18 @@ body {
   background-color: rgba(146,186,225,0.5);
   padding: 2%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-content: center;
   flex-wrap: wrap;
 }
 
 .movie {
-
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.movie_info {
-
+.movie > img {
+  max-width: 15vw;
 }
