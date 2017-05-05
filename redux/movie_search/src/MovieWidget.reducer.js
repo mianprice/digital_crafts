@@ -2,7 +2,9 @@ const INITIAL_STATE = {
 	query: "",
 	movieData: null,
 	isFetching: false,
-	error: null
+	error: null,
+	summary: false,
+	current_movie: null
 };
 
 export function reducer(state = INITIAL_STATE,action) {
@@ -29,6 +31,15 @@ export function reducer(state = INITIAL_STATE,action) {
 			movieData: null,
 			isFetching: false,
 			error: action.error
+		});
+	} else if (action.type === 'summarize') {
+		return Object.assign({}, state, {
+			summary: true,
+			current_movie: action.specific
+		});
+	} else if (action.type === 'back_to_results') {
+		return Object.assign({}, state, {
+			summary: false
 		});
 	}
 	return state;

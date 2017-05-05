@@ -8,15 +8,31 @@ export class MovieWidget extends React.Component {
 			let movieImages = movie.results.filter((element) => {
 				return element.poster_path !== null;
 			});
-			movieDisplay = (
-				<div className="movies">
-					{movieImages.map((element, idx) =>
-						<div className="movie" key={idx}>
-							<img src={'https://image.tmdb.org/t/p/w500' + element.poster_path} alt={element.title}/>
-						</div>
-					)}
-				</div>
-			);
+			if (this.props.search.summary) {
+				let current = movie.results.filter((element) => {
+					return element.id === this.props.search.current_movie;
+				});
+				current = current[0];
+				movieDisplay = (
+					<div className="summary">
+						<div className="m_title">{current.title}</div>
+						<div className="m_release">{current.release_date}</div>
+						<div className="m_overview">{current.overview}</div>
+						<div className="m_votes">{current.vote_average}</div>
+						<div className="m_back" onClick={(event) => this.props.back_to_results()}>Back to Search Results</div>
+					</div>
+				);
+			} else {
+				movieDisplay = (
+					<div className="movies">
+						{movieImages.map((element, idx) =>
+							<div className="movie" key={idx} onClick={(event) => this.props.displaySummary(element.id)}>
+								<img src={'https://image.tmdb.org/t/p/w500' + element.poster_path} alt={element.title}/>
+							</div>
+						)}
+					</div>
+				);
+			}
 		} else if (this.props.search.isFetching) {
 			movieDisplay = <div><img src="/gears.gif" alt="loading"/></div>;
 		} else if (this.props.search.error) {

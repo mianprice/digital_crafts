@@ -6,8 +6,13 @@ export const update_query = (event) => ({
 	val: event.target.value
 });
 
-export const start_get_results = () => ({
-	type: 'start_query'
+export const displaySummary = (id) => ({
+	type: 'summarize',
+	specific: id
+});
+
+export const back_to_results = () => ({
+	type: 'back_to_results'
 });
 
 function movieInfo(data) {
