@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: white;
+  background-color: black;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav > div {
+  margin: 10px;
+}
+
+.base_link {
+  padding: 5px;
+  background-color: lightblue;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+}
+
+.active {
+  background-color: darkblue;
+  color: white
+}
