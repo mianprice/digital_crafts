@@ -6,8 +6,11 @@ import ReduxThunk from 'redux-thunk';
 import {Router, Route, hashHistory, Link, IndexRoute, IndexLink} from 'react-router';
 import './index.css';
 // IMPORT COMPONENTS AND REDUCERS
+import PageContainer from './page/Page';
+import pageReducer from './page/Page.reducer';
 
 const reducer = Redux.combineReducers({
+  page: pageReducer
 });
 
 const store = Redux.createStore(
@@ -30,7 +33,9 @@ const AppLayout = ({ children }) =>
   <div>
     <div className="nav">
       <div><IndexLink to="/" activeClassName="active" className="base_link">Home</IndexLink></div>
-      <div><Link to="/test" activeClassName="active" className="base_link">Test</Link></div>
+      <div><Link to="/page/test" activeClassName="active" className="base_link">Test</Link></div>
+      <div><Link to="/page/test1" activeClassName="active" className="base_link">Test1</Link></div>
+      <div><Link to="/page/test2" activeClassName="active" className="base_link">Test2</Link></div>
     </div>
     <div>
       {children}
@@ -42,6 +47,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route path="/" component={AppLayout}>
         <IndexRoute component={HomePage}/>
+        <Route path="/page/:title" component={PageContainer}/>
         <Route path="/test" component={TestPage}/>
       </Route>
     </Router>

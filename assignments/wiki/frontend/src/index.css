@@ -29,3 +29,23 @@ body {
   background-color: darkblue;
   color: white
 }
+
+.start {
+  background-color: green;
+}
+
+.add {
+  background-color: blue;
+}
+
+.subtract {
+  background-color: red;
+}
+
+.d_button {
+  height: 100px;
+  width: 100px;
+  background-color: lightblue;
+  color: black;
+  text-align: center;
+}
