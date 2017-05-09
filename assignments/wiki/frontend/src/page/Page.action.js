@@ -2,11 +2,11 @@ import $ from 'jquery';
 
 export function toggleEdit() {
   return { type: 'toggle_edit' };
-}
+};
 
 export function contentUpdate(c) {
   return { type: 'content_update', content: c };
-}
+};
 
 export function updatePage(t,c) {
   console.log(c);
@@ -23,7 +23,7 @@ export function updatePage(t,c) {
     .catch(resp => dispatch(pageError(resp)))
   };
   return asyncAction;
-}
+};
 
 function pageInfo(data) {
   return { type: 'update_contents', payload: data };
@@ -33,9 +33,9 @@ function updatePageInfo(data) {
   return { type: 'save_contents', payload: data };
 }
 
-function pageError(resp) {
+function pageError(resp, title) {
   let error = (resp && resp.responseJSON && resp.responseJSON.message) || 'Something went wrong!';
-  return { type: 'weather_error', error: error };
+  return { type: 'page_error', error: error, title: title };
 }
 
 export function fetchPage(title) {
@@ -44,7 +44,7 @@ export function fetchPage(title) {
       url: `http://localhost:4000/api/page/${title}`
     })
     .then(data => dispatch(pageInfo(data)))
-    .catch(resp => dispatch(pageError(resp)))
+    .catch(resp => dispatch(pageError(resp,title)))
   };
   return asyncAction;
-}
+};

@@ -5,7 +5,6 @@ import * as ReactRedux from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import {Router, Route, hashHistory, Link, IndexRoute, IndexLink} from 'react-router';
 import './index.css';
-// IMPORT COMPONENTS AND REDUCERS
 import PageContainer from './page/Page';
 import pageReducer from './page/Page.reducer';
 

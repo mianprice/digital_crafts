@@ -1,7 +1,8 @@
 const INITIAL = {
   title: "Home",
   content: "This is the home page.",
-  editing: false
+  editing: false,
+  newPage: false
 }
 
 export default function reducer(state=INITIAL, action) {
@@ -10,7 +11,8 @@ export default function reducer(state=INITIAL, action) {
     let content = action.payload.content;
     return Object.assign({}, state, {
       title,
-      content
+      content,
+      newPage: false
     });
   } else if (action.type === 'toggle_edit') {
     return Object.assign({}, state, {
@@ -18,12 +20,20 @@ export default function reducer(state=INITIAL, action) {
     });
   } else if (action.type === 'content_update') {
     return Object.assign({}, state, {
-      content: action.content
+      content: action.content,
+      newPage: false
     });
   } else if (action.type === 'save_contents') {
     return Object.assign({}, state, {
       content: action.payload.content,
-      editing: false
+      editing: false,
+      newPage: false
+    });
+  } else if (action.type === 'page_error') {
+    return Object.assign({}, state, {
+      title: action.title,
+      content: "",
+      newPage: true
     });
   } else {
     return state;
