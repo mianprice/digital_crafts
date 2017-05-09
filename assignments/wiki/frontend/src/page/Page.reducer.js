@@ -35,7 +35,6 @@ export default function reducer(state=INITIAL, action) {
       content: "",
       newPage: true
     });
-  } else {
-    return state;
   }
+  return state;
 }

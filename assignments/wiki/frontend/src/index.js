@@ -7,9 +7,15 @@ import {Router, Route, hashHistory, Link, IndexRoute, IndexLink} from 'react-rou
 import './index.css';
 import PageContainer from './page/Page';
 import pageReducer from './page/Page.reducer';
+import SignupContainer from './signup/Signup';
+import signupReducer from './signup/Signup.reducer';
+import LoginContainer from './login/Login';
+import loginReducer from './login/Login.reducer';
 
 const reducer = Redux.combineReducers({
-  page: pageReducer
+  page: pageReducer,
+  signup: signupReducer,
+  login: loginReducer
 });
 
 const store = Redux.createStore(
@@ -23,15 +29,12 @@ const HomePage = () =>
     <h1>WIKI</h1>
   </div>;
 
-const TestPage = () =>
-  <div>
-    <h1>TEST</h1>
-  </div>;
-
 const AppLayout = ({ children }) =>
   <div>
     <div className="nav">
       <div><IndexLink to="/" activeClassName="active" className="base_link">Home</IndexLink></div>
+      <div><Link to="/signup" activeClassName="active" className="base_link">Sign Up</Link></div>
+      <div><Link to="/login" activeClassName="active" className="base_link">Login</Link></div>
       <div><Link to="/page/test" activeClassName="active" className="base_link">Test</Link></div>
       <div><Link to="/page/test1" activeClassName="active" className="base_link">Test1</Link></div>
       <div><Link to="/page/test2" activeClassName="active" className="base_link">Test2</Link></div>
@@ -47,7 +50,8 @@ ReactDOM.render(
       <Route path="/" component={AppLayout}>
         <IndexRoute component={HomePage}/>
         <Route path="/page/:title" component={PageContainer}/>
-        <Route path="/test" component={TestPage}/>
+        <Route path="/signup" component={SignupContainer}/>
+        <Route path="/login" component={LoginContainer}/>
       </Route>
     </Router>
   </ReactRedux.Provider>,

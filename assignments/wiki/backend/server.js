@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 const pgp = require('pg-promise')();
 const db = pgp({
   database: 'wiki',
@@ -34,6 +36,59 @@ app.get('/api/page/:title', (req, resp, next) => {
     .catch(next);
 });
 
+app.post('/api/signup', (req,res,next) => {
+  let username = req.body.username;
+  let password = req.body.password;
+
+  bcrypt.genSalt(10)
+    .then((salt) => {
+      return bcrypt.hash(password, salt);
+    })
+    .then((hash) => {
+      return db.one('insert into authors values(default, $1, $2, now(), now()) returning id, username, time_created', [username, hash])
+
+    })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(next);
+});
+
+app.post('/api/login', (req,res,next) => {
+  let username = req.body.username;
+  let password = req.body.password;
+  let auth_id;
+  db.one('select * from authors where username=$1', [username])
+    .then((data) => {
+      auth_id = data.id;
+      return bcrypt.compare(password,data.password)
+    })
+    .then((result) => {
+      if (result) {
+        let token = uuid.v4();
+        return db.one('insert into login_sessions values(default,$1,$2) returning *', [auth_id,token])
+      }
+    })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch(next);
+});
+
+app.use(function authenticate(req,res,next) {
+  db.one('select * from login_sessions where token=$1', [req.body.token])
+    .then((data) => {
+      return db.one('select * from authors where id=$1', [data.id])
+    })
+    .then((data) => {
+      req.author = data;
+      next();
+    })
+    .catch((err) => {
+      res.send('Unauthenticated user, please log in.');
+    });
+});
+
 app.put('/api/page/:title', (req, resp, next) => {
   let title = req.params.title;
   let content = req.body.content;
@@ -47,7 +102,7 @@ app.put('/api/page/:title', (req, resp, next) => {
           time_modified = now()
     returning *
     `, [title, content])
-    .then(page => resp.json(page))
+    .then(page => resp.json({page,author:req.author}))
     .catch(next);
 });
 

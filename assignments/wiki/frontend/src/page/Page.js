@@ -31,13 +31,16 @@ class Page extends React.Component {
       <div>{"This page doesn't exist yet."}</div>
     ) : pageContent);
     let save_control = <div className="base_link save_control" onClick={(event) => {this.props.updatePage(pageInfo.title,pageInfo.content);}}>Save Changes</div>;
+    let editButton = this.props.login.token ? (
+      <div className="edit_button base_link" onClick={this.props.toggleEdit}>{pageInfo.newPage ? "Create this page" : "Edit Page"}</div>
+    ) : "";
     return (
       <div className="page_i">
         <div className="page_header">
           <div className="page_title">
             <div>{pageInfo.title}</div>
           </div>
-          <div className="edit_button base_link" onClick={this.props.toggleEdit}>{pageInfo.newPage ? "Create this page" : "Edit Page"}</div>
+          {editButton}
         </div>
         <div className="page_body">
           {body_content}
@@ -50,7 +53,8 @@ class Page extends React.Component {
 
 const PageContainer = ReactRedux.connect(
   state => ({
-    page: state.page
+    page: state.page,
+    login: state.login
   }),
   actions
 )(Page);

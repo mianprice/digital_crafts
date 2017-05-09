@@ -20,7 +20,7 @@ export function updatePage(t,c) {
       data: JSON.stringify({ "content": c })
     })
     .then(data => dispatch(updatePageInfo(data)))
-    .catch(resp => dispatch(pageError(resp)))
+    .catch(resp => dispatch(pageError(resp,t)))
   };
   return asyncAction;
 };
