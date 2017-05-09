@@ -20,6 +20,11 @@ export default function reducer(state=INITIAL, action) {
     return Object.assign({}, state, {
       content: action.content
     });
+  } else if (action.type === 'save_contents') {
+    return Object.assign({}, state, {
+      content: action.payload.content,
+      editing: false
+    });
   } else {
     return state;
   }

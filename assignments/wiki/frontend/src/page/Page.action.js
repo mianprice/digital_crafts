@@ -13,11 +13,13 @@ export function updatePage(t,c) {
   console.log(t);
   let asyncAction = function(dispatch) {
     $.ajax({
-      url: `http://localhost:4000/api/page/${t}`,
       method: 'PUT',
-      data: { "content": c }
+      url: `http://localhost:4000/api/page/${t}`,
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({ "content": c })
     })
-    .then(data => dispatch(pageInfo(data)))
+    .then(data => dispatch(updatePageInfo(data)))
     .catch(resp => dispatch(pageError(resp)))
   };
   return asyncAction;
@@ -25,6 +27,10 @@ export function updatePage(t,c) {
 
 function pageInfo(data) {
   return { type: 'update_contents', payload: data };
+}
+
+function updatePageInfo(data) {
+  return { type: 'save_contents', payload: data };
 }
 
 function pageError(resp) {
