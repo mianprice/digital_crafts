@@ -30,22 +30,39 @@ body {
   color: white
 }
 
-.start {
-  background-color: green;
+.page_i {
+  padding: 5%;
 }
 
-.add {
-  background-color: blue;
+.page_title {
+  font-size: 200%;
+  margin: 5px;
 }
 
-.subtract {
-  background-color: red;
+.page_header {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.d_button {
-  height: 100px;
-  width: 100px;
-  background-color: lightblue;
-  color: black;
-  text-align: center;
+.page_body {
+  background-color: rgb(125,125,125);
+  border-radius: 25px;
+  color: rgb(255,255,255);
+  padding: 2.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.body_edit {
+  width: 80%;
+}
+
+.save_control {
+  width: 50%;
+  margin: 1% 25%;
 }

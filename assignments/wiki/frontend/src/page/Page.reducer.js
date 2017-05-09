@@ -1,6 +1,7 @@
 const INITIAL = {
   title: "Home",
-  content: "This is the home page."
+  content: "This is the home page.",
+  editing: false
 }
 
 export default function reducer(state=INITIAL, action) {
@@ -8,11 +9,17 @@ export default function reducer(state=INITIAL, action) {
     let title = action.payload.title;
     let content = action.payload.content;
     return Object.assign({}, state, {
-      title: title,
-      content: content
+      title,
+      content
     });
-  } else if (action.type === 'subtract') {
-    return "subtract";
+  } else if (action.type === 'toggle_edit') {
+    return Object.assign({}, state, {
+      editing: !state.editing
+    });
+  } else if (action.type === 'content_update') {
+    return Object.assign({}, state, {
+      content: action.content
+    });
   } else {
     return state;
   }
