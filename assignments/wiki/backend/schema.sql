@@ -1,6 +1,6 @@
 CREATE TABLE page (
-  title varchar PRIMARY KEY,
+  title varchar,
   content varchar,
-  time_modified timestamp,
-  time_created timestamp default now()
+  modified timestamp,
+  editor integer
 );

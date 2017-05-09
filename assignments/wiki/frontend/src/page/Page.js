@@ -23,6 +23,7 @@ class Page extends React.Component {
     function page_content(c) {
       return <div dangerouslySetInnerHTML={createMarkup(c)}></div>
     }
+    console.log(this.props.page);
     let pageInfo = this.props.page;
     let pageContent = page_content(pageInfo.content);
     let body_content = pageInfo.editing ? (
@@ -30,9 +31,14 @@ class Page extends React.Component {
     ) : (pageInfo.newPage ? (
       <div>{"This page doesn't exist yet."}</div>
     ) : pageContent);
-    let save_control = <div className="base_link save_control" onClick={(event) => {this.props.updatePage(pageInfo.title,pageInfo.content);}}>Save Changes</div>;
+    let save_control = <div className="base_link save_control" onClick={(event) => {this.props.updatePage(pageInfo.title,pageInfo.content,this.props.login.token);}}>Save Changes</div>;
     let editButton = this.props.login.token ? (
       <div className="edit_button base_link" onClick={this.props.toggleEdit}>{pageInfo.newPage ? "Create this page" : "Edit Page"}</div>
+    ) : "";
+    let editedBy = pageInfo.last_edit ? (
+      <div className="last_edited">
+        <div>Page last edited by: {pageInfo.last_edit}</div>
+      </div>
     ) : "";
     return (
       <div className="page_i">
@@ -41,6 +47,7 @@ class Page extends React.Component {
             <div>{pageInfo.title}</div>
           </div>
           {editButton}
+          {editedBy}
         </div>
         <div className="page_body">
           {body_content}

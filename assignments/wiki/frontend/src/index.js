@@ -29,25 +29,33 @@ const HomePage = () =>
     <h1>WIKI</h1>
   </div>;
 
-const AppLayout = ({ children }) =>
-  <div>
-    <div className="nav">
-      <div><IndexLink to="/" activeClassName="active" className="base_link">Home</IndexLink></div>
-      <div><Link to="/signup" activeClassName="active" className="base_link">Sign Up</Link></div>
-      <div><Link to="/login" activeClassName="active" className="base_link">Login</Link></div>
-      <div><Link to="/page/test" activeClassName="active" className="base_link">Test</Link></div>
-      <div><Link to="/page/test1" activeClassName="active" className="base_link">Test1</Link></div>
-      <div><Link to="/page/test2" activeClassName="active" className="base_link">Test2</Link></div>
-    </div>
-    <div>
-      {children}
-    </div>
-  </div>;
+class AppLayout extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="nav">
+          <div><IndexLink to="/" activeClassName="active" className="base_link">Home</IndexLink></div>
+          {!this.props.state.login.token ? (<div><Link to="/login" activeClassName="active" className="base_link">Login</Link></div>) : ""}
+          {!this.props.state.login.token ? (<div><Link to="/signup" activeClassName="active" className="base_link">Sign Up</Link></div>) : ""}
+          {this.props.state.login.token ? (<div className="base_link">Welcome back, {this.props.state.login.username}</div>) : ""}
+          <div><Link to="/page/Main" activeClassName="active" className="base_link">Test</Link></div>
+        </div>
+        <div>
+          {this.props.children}
+        </div>
+      </div>
+    );
+  }
+}
+
+const AppLayoutContainer = ReactRedux.connect(
+  state => ({state})
+)(AppLayout);
 
 ReactDOM.render(
   <ReactRedux.Provider store={store}>
     <Router history={hashHistory}>
-      <Route path="/" component={AppLayout}>
+      <Route path="/" component={AppLayoutContainer}>
         <IndexRoute component={HomePage}/>
         <Route path="/page/:title" component={PageContainer}/>
         <Route path="/signup" component={SignupContainer}/>

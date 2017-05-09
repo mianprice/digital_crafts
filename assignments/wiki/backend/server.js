@@ -22,7 +22,7 @@ app.get('/api/pages', (req, resp, next) => {
 
 app.get('/api/page/:title', (req, resp, next) => {
   let title = req.params.title;
-  db.oneOrNone('select * from page where title = $1', title)
+  db.oneOrNone('select * from page inner join authors on (page.editor=authors.id) where title = $1 order by modified desc limit 1', title)
     .then(page => {
       if (page === null) {
         resp.status(404); // 404 not found
@@ -45,7 +45,7 @@ app.post('/api/signup', (req,res,next) => {
       return bcrypt.hash(password, salt);
     })
     .then((hash) => {
-      return db.one('insert into authors values(default, $1, $2, now(), now()) returning id, username, time_created', [username, hash])
+      return db.one('insert into authors values(default, $1, $2, now()) returning id, username, time_created', [username, hash])
 
     })
     .then((data) => {
@@ -78,7 +78,7 @@ app.post('/api/login', (req,res,next) => {
 app.use(function authenticate(req,res,next) {
   db.one('select * from login_sessions where token=$1', [req.body.token])
     .then((data) => {
-      return db.one('select * from authors where id=$1', [data.id])
+      return db.one('select * from authors where id=$1', [data.auth_id])
     })
     .then((data) => {
       req.author = data;
@@ -92,16 +92,14 @@ app.use(function authenticate(req,res,next) {
 app.put('/api/page/:title', (req, resp, next) => {
   let title = req.params.title;
   let content = req.body.content;
+  console.log(req.author);
   // this statement below either inserts or updates
   // the page - it is called "upsert"
   // See http://stackoverflow.com/questions/1109061/insert-on-duplicate-update-in-postgresql
   db.one(`
-    insert into page values ($1, $2, now(), now())
-    on conflict (title) do update
-      set content = $2,
-          time_modified = now()
+    insert into page values ($1, $2, now(), $3)
     returning *
-    `, [title, content])
+    `, [title, content, req.author.id])
     .then(page => resp.json({page,author:req.author}))
     .catch(next);
 });

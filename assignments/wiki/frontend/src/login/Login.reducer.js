@@ -17,7 +17,7 @@ export default function reducer(state=INITIAL, action) {
       password: p
     });
   } else if (action.type === 'login_success') {
-    return Object.assign({}, INITIAL, {
+    return Object.assign({}, state, {
       token: action.payload.token
     });
   } else if (action.type === 'login_error') {

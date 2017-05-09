@@ -8,19 +8,17 @@ export function contentUpdate(c) {
   return { type: 'content_update', content: c };
 };
 
-export function updatePage(t,c) {
-  console.log(c);
-  console.log(t);
+export function updatePage(title,con,user_token) {
   let asyncAction = function(dispatch) {
     $.ajax({
       method: 'PUT',
-      url: `http://localhost:4000/api/page/${t}`,
+      url: `http://localhost:4000/api/page/${title}`,
       dataType: 'json',
       contentType: 'application/json',
-      data: JSON.stringify({ "content": c })
+      data: JSON.stringify({ content: con, token:user_token })
     })
     .then(data => dispatch(updatePageInfo(data)))
-    .catch(resp => dispatch(pageError(resp,t)))
+    .catch(resp => dispatch(pageError(resp,title)))
   };
   return asyncAction;
 };
