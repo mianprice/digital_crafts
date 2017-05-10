@@ -92,7 +92,6 @@ app.use(function authenticate(req,res,next) {
 app.put('/api/page/:title', (req, resp, next) => {
   let title = req.params.title;
   let content = req.body.content;
-  console.log(req.author);
   // this statement below either inserts or updates
   // the page - it is called "upsert"
   // See http://stackoverflow.com/questions/1109061/insert-on-duplicate-update-in-postgresql

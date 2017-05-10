@@ -38,7 +38,7 @@ class AppLayout extends React.Component {
           {!this.props.state.login.token ? (<div><Link to="/login" activeClassName="active" className="base_link">Login</Link></div>) : ""}
           {!this.props.state.login.token ? (<div><Link to="/signup" activeClassName="active" className="base_link">Sign Up</Link></div>) : ""}
           {this.props.state.login.token ? (<div className="base_link">Welcome back, {this.props.state.login.username}</div>) : ""}
-          <div><Link to="/page/Main" activeClassName="active" className="base_link">Test</Link></div>
+          <div><Link to="/page/Main" activeClassName="active" className="base_link">Main</Link></div>
         </div>
         <div>
           {this.props.children}

@@ -23,7 +23,6 @@ class Page extends React.Component {
     function page_content(c) {
       return <div dangerouslySetInnerHTML={createMarkup(c)}></div>
     }
-    console.log(this.props.page);
     let pageInfo = this.props.page;
     let pageContent = page_content(pageInfo.content);
     let body_content = pageInfo.editing ? (
